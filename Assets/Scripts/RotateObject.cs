@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour {
 
-    private static readonly float SPEED = 100;
+    private static readonly float MirrorRotateSpeed = 100;
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +15,9 @@ public class RotateObject : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(Vector3.up * Time.deltaTime * SPEED);
-        } else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(Vector3.down * Time.deltaTime * SPEED);
+            transform.Rotate(Vector3.up * Time.deltaTime * MirrorRotateSpeed);
+        } else if (Input.GetKey(KeyCode.RightArrow)) {
+            transform.Rotate(Vector3.down * Time.deltaTime * MirrorRotateSpeed);
         }
     }
 }
