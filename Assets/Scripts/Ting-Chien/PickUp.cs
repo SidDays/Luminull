@@ -21,11 +21,11 @@ public class PickUp : MonoBehaviour {
         transform.Rotate(rotate * Time.deltaTime);
 
         Vector3 movement = transform.position;
-        movement.y = evaluatefloatingY();
+        movement.y = EvaluatefloatingY();
         transform.position = movement;
 	}
 
-    float evaluatefloatingY()
+    private float EvaluatefloatingY()
     {
         count = count + floatingSpeed * Time.deltaTime;
         if (count > 2 * Mathf.PI) count %= Mathf.PI;
@@ -33,5 +33,10 @@ public class PickUp : MonoBehaviour {
         float offset = floatingHeight * Mathf.Sin(count);
 
         return yOriginPos + offset;
+    }
+
+    public virtual void OnPickUp()
+    {
+        gameObject.SetActive(false);
     }
 }
