@@ -13,11 +13,21 @@ public class RotateObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.LeftArrow))
+		
+    }
+
+    private void OnMouseOver()
+    {
+        //if (Input.GetKey(KeyCode.LeftArrow))
+        // {
+        if (Input.GetMouseButton(0))
         {
             transform.Rotate(Vector3.up * Time.deltaTime * MirrorRotateSpeed);
-        } else if (Input.GetKey(KeyCode.RightArrow)) {
-            transform.Rotate(Vector3.down * Time.deltaTime * MirrorRotateSpeed);
         }
+       // }
+       // else if (Input.GetKey(KeyCode.RightArrow))
+       // {
+       //     transform.Rotate(Vector3.down * Time.deltaTime * MirrorRotateSpeed);
+       // }
     }
 }
