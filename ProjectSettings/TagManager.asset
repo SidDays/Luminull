@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Mirror
+  - Coin Pick Up
+
   layers:
   - Default
   - TransparentFX
