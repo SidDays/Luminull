@@ -7,7 +7,11 @@ TagManager:
   - Wall
   - Mirror
   - Coin Pick Up
+<<<<<<< Updated upstream
   - CameraChanger
+=======
+  - Obstacle
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

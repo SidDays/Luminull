@@ -60,6 +60,7 @@ public class PlayerControllerTemp : MonoBehaviour {
         PlayerRB.velocity = transform.forward * speed;
     }
 
+<<<<<<< Updated upstream
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Coin Pick Up"))
@@ -77,16 +78,14 @@ public class PlayerControllerTemp : MonoBehaviour {
                 other.gameObject.GetComponent<ReflectObject>().MirrorHit = true;
             }
         }
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        /*if (collision.gameObject.tag == "Wall")
-        {
-            Colliding = true;
-            PlayerRB.velocity = Vector3.zero;
-            PlayerRB.freezeRotation = true;
-            PlayerRB.angularVelocity = Vector3.zero;
-        }*/
-    }
 }
