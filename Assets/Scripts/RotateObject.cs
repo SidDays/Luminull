@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour {
 
-    private static readonly float MirrorRotateSpeed = 100;
+    private static readonly float MirrorRotateSpeed = 50;//100;
 
 	// Use this for initialization
 	void Start () {
