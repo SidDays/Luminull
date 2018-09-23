@@ -10,6 +10,11 @@ public class PlayerControllerTemp : MonoBehaviour {
     public float speed = 15.0f;
     public static float LaserNormalSpeed = 0.5f;
     public float LaserSpawnSpeed = LaserNormalSpeed;
+
+    public UIManager UIManager;
+
+    private int score;
+
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
@@ -19,6 +24,10 @@ public class PlayerControllerTemp : MonoBehaviour {
         NewLaser.transform.forward = transform.forward;
         Physics.IgnoreCollision(NewLaser.GetComponent<Collider>(), GetComponent<Collider>());
         */
+        if (UIManager == null)
+            Debug.LogError("PlayerController doesn't have UIManager! Drag UIManager from prefab to scene and insert it into PlayController.\n");
+        UIManager.SetPlayerSpeedText(speed);
+        score = 0;
      }
 
     void Update()
@@ -65,6 +74,15 @@ public class PlayerControllerTemp : MonoBehaviour {
         {
             CoinPickUp script = other.GetComponent<CoinPickUp>();
             script.OnPickUp();
+            score += script.score;
+            UIManager.SetPlayerScoreText(score);
+        }
+        if(other.gameObject.CompareTag("SpeedChange Pick Up"))
+        {
+            SpeedChangePickUp script = other.GetComponent<SpeedChangePickUp>();
+            script.OnPickUp();
+            speed = script.GetNewSpeed(speed);
+            UIManager.SetPlayerSpeedText(speed);
         }
 
         if (other.gameObject.CompareTag("Mirror"))
