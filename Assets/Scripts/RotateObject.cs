@@ -5,29 +5,48 @@ using UnityEngine;
 public class RotateObject : MonoBehaviour {
 
     private static readonly float MirrorRotateSpeed = 50;//100;
+    private float _sensitivity;
+    private Vector3 _mouseReference;
+    private Vector3 _mouseOffset;
+    private Vector3 _rotation;
+    private bool _isRotating;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    void Start()
+    {
+        _sensitivity = 0.4f;
+        _rotation = Vector3.zero;
     }
 
-    private void OnMouseOver()
+    void Update()
     {
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        // {
-        if (Input.GetMouseButton(0))
+        if (_isRotating)
         {
-            transform.Rotate(Vector3.up * Time.deltaTime * MirrorRotateSpeed);
+            // offset
+            _mouseOffset = (Input.mousePosition - _mouseReference);
+
+            // apply rotation
+            _rotation.y = -(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
+
+            // rotate
+            transform.Rotate(_rotation);
+
+            // store mouse
+            _mouseReference = Input.mousePosition;
         }
-       // }
-       // else if (Input.GetKey(KeyCode.RightArrow))
-       // {
-       //     transform.Rotate(Vector3.down * Time.deltaTime * MirrorRotateSpeed);
-       // }
+    }
+
+    void OnMouseDown()
+    {
+        // rotating flag
+        _isRotating = true;
+
+        // store mouse
+        _mouseReference = Input.mousePosition;
+    }
+
+    void OnMouseUp()
+    {
+        // rotating flag
+        _isRotating = false;
     }
 }
