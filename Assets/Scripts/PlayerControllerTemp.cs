@@ -1,23 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControllerTemp : MonoBehaviour {
 
     public bool Colliding = false;
     Rigidbody PlayerRB;
+    public Slider ControlSlider;
     public GameObject LaserObject;
+    public GameObject PlayerSelectedObject;
     public float speed = 15.0f;
+    public float SpeedPowerupLength = 5.0f;
     public static float LaserNormalSpeed = 0.5f;
     public float LaserSpawnSpeed = LaserNormalSpeed;
 
     public UIManager UIManager;
 
     private int score;
+    private float CurrentSpeedPowerupLength = 0.0f;
+    private float CachedSpeed = 1.0f;
 
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
+        PlayerSelectedObject = null;
         /*GameObject NewLaser = Instantiate(LaserObject);
         //NewLaser.transform.parent = transform;
         NewLaser.transform.position = transform.position;
@@ -32,6 +39,20 @@ public class PlayerControllerTemp : MonoBehaviour {
 
     void Update()
     {
+        if(CurrentSpeedPowerupLength > 0.0f)
+        {
+            CurrentSpeedPowerupLength -= Time.deltaTime;
+            if(CurrentSpeedPowerupLength<=0)
+            {
+                speed = CachedSpeed;
+                UIManager.SetPlayerSpeedText(speed);
+            }
+        }
+
+        if (PlayerSelectedObject == null && ControlSlider.gameObject.activeSelf)
+        {
+            ControlSlider.gameObject.SetActive(false);
+        }
         LaserSpawnSpeed -= Time.deltaTime;
         if(LaserSpawnSpeed<0.0f)
         {
@@ -81,7 +102,9 @@ public class PlayerControllerTemp : MonoBehaviour {
         {
             SpeedChangePickUp script = other.GetComponent<SpeedChangePickUp>();
             script.OnPickUp();
+            CachedSpeed = speed;
             speed = script.GetNewSpeed(speed);
+            CurrentSpeedPowerupLength = SpeedPowerupLength;
             UIManager.SetPlayerSpeedText(speed);
         }
 
@@ -96,12 +119,58 @@ public class PlayerControllerTemp : MonoBehaviour {
         }
         if (other.gameObject.CompareTag("Wall"))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            UIManager.ToggleGameOverText();
+            UIManager.TogglePlayAgainButton();
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
         if (other.gameObject.CompareTag("Finish"))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            UIManager.ToggleWinText();
+            UIManager.TogglePlayAgainButton();
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 
+    public void SelectObject(GameObject selected)
+    {
+        if(PlayerSelectedObject!=null)
+        {
+            if(PlayerSelectedObject.GetComponent<RotateObject>())
+            {
+                PlayerSelectedObject.GetComponent<RotateObject>().Deselect();
+            }
+        }
+        PlayerSelectedObject = selected;
+        ControlSlider.gameObject.SetActive(true);
+    }
+
+    public void DeselectObject()
+    {
+        if (PlayerSelectedObject.GetComponent<RotateObject>())
+        {
+            PlayerSelectedObject.GetComponent<RotateObject>().Deselect();
+        }
+        PlayerSelectedObject = null;
+    }
+
+    public void RotateSelectedObjectAroundY()
+    {
+        // apply rotation
+        Vector3 _rotation = new Vector3(0, 0, 0);
+        _rotation.y = -(ControlSlider.value - 0.5f) * 100;//-(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
+
+        // rotate
+        transform.Rotate(_rotation);
+    }
+
+    public void SetControlSlider(Slider mainSlider)
+    {
+        ControlSlider = mainSlider;
+    }
+
+    public Slider GetControlSlider()
+    {
+        return ControlSlider;
+    }
 }
+

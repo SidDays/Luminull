@@ -17,5 +17,10 @@ public class PlayerDirectionController : MonoBehaviour
         {
             transform.forward = other.transform.forward;
         }
+
+        if (other.gameObject.CompareTag("RedirectWall"))
+        {
+            other.gameObject.GetComponent<RedirectPlayer>().WarpPlayerToRedirectPoint();
+        }
     }
 }

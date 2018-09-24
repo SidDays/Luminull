@@ -10,6 +10,7 @@ TagManager:
   - CameraChanger
   - Obstacle
   - SpeedChange Pick Up
+  - RedirectWall
   layers:
   - Default
   - TransparentFX

@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
+    public GameObject Player;
     public Text playerScoreText;
     public Text playerSpeedText;
+    public Text GameOverText;
+    public Text WinText;
+    public Button PlayAgainButton;
+    public Slider MainSliderControl;
 
 	// Use this for initialization
 	void Start () {
+        Player = GameObject.Find("Player");
         SetPlayerScoreText(0);
 	}
 	
@@ -26,5 +32,20 @@ public class UIManager : MonoBehaviour {
     public void SetPlayerSpeedText(float val)
     {
         playerSpeedText.text = "Speed: " + val.ToString();
+    }
+
+    public void ToggleGameOverText()
+    {
+        GameOverText.gameObject.SetActive(true);
+    }
+
+    public void ToggleWinText()
+    {
+        WinText.gameObject.SetActive(true);
+    }
+
+    public void TogglePlayAgainButton()
+    {
+        PlayAgainButton.gameObject.SetActive(true);
     }
 }

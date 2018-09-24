@@ -16,6 +16,11 @@ public class SpeedChangePickUp : PickUp
 
     public float GetNewSpeed(float speed)
     {
-        return (changeByDiff) ? speed + speedDiff : this.speed;
+        float NewSpeed = speed + speedDiff;
+        if(changeByDiff && (speed + speedDiff)<= 0)
+        {
+            NewSpeed = 1;
+        }
+        return (changeByDiff) ? NewSpeed : this.speed;
     }
 }

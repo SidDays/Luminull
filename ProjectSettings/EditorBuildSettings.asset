@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Alex's Dev Scene.unity
     guid: 20edf7409f218624b96d2011c21c280f
+  - enabled: 1
+    path: Assets/Scenes/Prototype.unity
+    guid: 425df4e36ff7d24469d94a930f81637a
   m_configObjects: {}

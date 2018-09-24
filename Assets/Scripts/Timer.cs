@@ -25,16 +25,7 @@ public class Timer : MonoBehaviour {
         string minutes = ((int)t / 60).ToString();
         string seconds = (t % 60).ToString("f2");
 
-        timerText.text = minutes + ":" + seconds;
-
-        if(minutes=="2"){
-            Finnish();
-        }
+        timerText.text = "Time: " + minutes + ":" + seconds;
 
 	}
-
-    public void Finnish() {
-        finnished = true;
-        timerText.color = Color.yellow;
-    }
 }
