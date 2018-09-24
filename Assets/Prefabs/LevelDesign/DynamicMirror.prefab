@@ -56,14 +56,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1226914188996548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.38, y: 2, z: 24.698875}
+  m_LocalRotation: {x: -0, y: -0.9433365, z: -0, w: 0.33183777}
+  m_LocalPosition: {x: -1.4401772, y: 2, z: 22.2}
   m_LocalScale: {x: 2, y: 2, z: 0.2}
   m_Children:
   - {fileID: 4319843658621068}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -141.23901, z: 0}
 --- !u!4 &4319843658621068
 Transform:
   m_ObjectHideFlags: 1
@@ -71,8 +71,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1229584773520932}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.49999952}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.049999997}
+  m_LocalPosition: {x: 0, y: 0, z: -0.04}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1.0947635}
   m_Children: []
   m_Father: {fileID: 4172611401416238}
   m_RootOrder: 0
@@ -223,5 +223,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b73dc98ae712c4a8c98492f2fbfe22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlSlider: {fileID: 0}
   HighlightMaterial: {fileID: 2100000, guid: 83348f116fc8f59408dc346780044282, type: 2}
