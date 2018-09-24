@@ -7,7 +7,9 @@ TagManager:
   - Wall
   - Mirror
   - Coin Pick Up
-
+  - CameraChanger
+  - Obstacle
+  - SpeedChange Pick Up
   layers:
   - Default
   - TransparentFX

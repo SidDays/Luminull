@@ -6,18 +6,44 @@ public class PlayerControllerTemp : MonoBehaviour {
 
     public bool Colliding = false;
     Rigidbody PlayerRB;
+    public GameObject LaserObject;
     public float speed = 15.0f;
+    public static float LaserNormalSpeed = 0.5f;
+    public float LaserSpawnSpeed = LaserNormalSpeed;
+
+    public UIManager UIManager;
+
+    private int score;
 
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
-        
-    }
+        /*GameObject NewLaser = Instantiate(LaserObject);
+        //NewLaser.transform.parent = transform;
+        NewLaser.transform.position = transform.position;
+        NewLaser.transform.forward = transform.forward;
+        Physics.IgnoreCollision(NewLaser.GetComponent<Collider>(), GetComponent<Collider>());
+        */
+        if (UIManager == null)
+            Debug.LogError("PlayerController doesn't have UIManager! Drag UIManager from prefab to scene and insert it into PlayController.\n");
+        UIManager.SetPlayerSpeedText(speed);
+        score = 0;
+     }
 
-    /*void Update()
+    void Update()
     {
+        LaserSpawnSpeed -= Time.deltaTime;
+        if(LaserSpawnSpeed<0.0f)
+        {
+            GameObject NewLaser = Instantiate(LaserObject);
+            //NewLaser.transform.parent = transform;
+            NewLaser.transform.position = transform.position;
+            NewLaser.transform.forward = transform.forward;
+            Physics.IgnoreCollision(NewLaser.GetComponent<Collider>(), GetComponent<Collider>());
+            LaserSpawnSpeed = LaserNormalSpeed;
+        }
         //var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-        var z = speed * Time.deltaTime;
+        /*var z = speed * Time.deltaTime;
         if (!Colliding)
         {
 
@@ -35,22 +61,47 @@ public class PlayerControllerTemp : MonoBehaviour {
             {
                 transform.Rotate(0, -90, 0);
             }
-        }
-    }*/
+        }*/
+    }
 
     private void FixedUpdate()
     {
         PlayerRB.velocity = transform.forward * speed;
     }
-
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        /*if (collision.gameObject.tag == "Wall")
+        if (other.gameObject.CompareTag("Coin Pick Up"))
         {
-            Colliding = true;
-            PlayerRB.velocity = Vector3.zero;
-            PlayerRB.freezeRotation = true;
-            PlayerRB.angularVelocity = Vector3.zero;
-        }*/
+            CoinPickUp script = other.GetComponent<CoinPickUp>();
+            script.OnPickUp();
+            score += script.score;
+            UIManager.SetPlayerScoreText(score);
+        }
+        if(other.gameObject.CompareTag("SpeedChange Pick Up"))
+        {
+            SpeedChangePickUp script = other.GetComponent<SpeedChangePickUp>();
+            script.OnPickUp();
+            speed = script.GetNewSpeed(speed);
+            UIManager.SetPlayerSpeedText(speed);
+        }
+
+        if (other.gameObject.CompareTag("Mirror"))
+        {
+            if (!other.gameObject.GetComponent<ReflectObject>().MirrorHit)
+            {
+                Vector3 ReflectionAngle = Vector3.Reflect(transform.forward, other.transform.forward);
+                transform.forward = ReflectionAngle;
+                other.gameObject.GetComponent<ReflectObject>().MirrorHit = true;
+            }
+        }
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
     }
+
 }
