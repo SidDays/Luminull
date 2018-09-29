@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour {
     public Text WinText;
     public Button PlayAgainButton;
     public Slider MainSliderControl;
+    public Button SpeedUpButton;
+    public Button SpeedDownButton;
 
 	// Use this for initialization
 	void Start () {
@@ -47,5 +49,14 @@ public class UIManager : MonoBehaviour {
     public void TogglePlayAgainButton()
     {
         PlayAgainButton.gameObject.SetActive(true);
+    }
+
+    public void SetPlayerSpeedWithDiff(float diff)
+    {
+        PlayerControllerTemp playerController = Player.GetComponent<PlayerControllerTemp>();
+        if(playerController)
+        {
+            playerController.SetSpeedWithDiff(diff);
+        }
     }
 }

@@ -10,16 +10,18 @@ public class PlayerControllerTemp : MonoBehaviour {
     public Slider ControlSlider;
     public GameObject LaserObject;
     public GameObject PlayerSelectedObject;
-    public float speed = 15.0f;
-    public float SpeedPowerupLength = 5.0f;
+    public float speed = 2.0f;
+    public float speedMin = 1.0f;
+    public float speedMax = 20.0f;
+    //public float SpeedPowerupLength = 5.0f;
     public static float LaserNormalSpeed = 0.5f;
     public float LaserSpawnSpeed = LaserNormalSpeed;
 
     public UIManager UIManager;
 
     private int score;
-    private float CurrentSpeedPowerupLength = 0.0f;
-    private float CachedSpeed = 1.0f;
+    //private float CurrentSpeedPowerupLength = 0.0f;
+    //private float CachedSpeed = 1.0f;
 
     void Start()
     {
@@ -39,7 +41,7 @@ public class PlayerControllerTemp : MonoBehaviour {
 
     void Update()
     {
-        if(CurrentSpeedPowerupLength > 0.0f)
+        /*if(CurrentSpeedPowerupLength > 0.0f)
         {
             CurrentSpeedPowerupLength -= Time.deltaTime;
             if(CurrentSpeedPowerupLength<=0)
@@ -47,7 +49,7 @@ public class PlayerControllerTemp : MonoBehaviour {
                 speed = CachedSpeed;
                 UIManager.SetPlayerSpeedText(speed);
             }
-        }
+        }*/
 
         if (PlayerSelectedObject == null && ControlSlider.gameObject.activeSelf)
         {
@@ -98,7 +100,7 @@ public class PlayerControllerTemp : MonoBehaviour {
             score += script.score;
             UIManager.SetPlayerScoreText(score);
         }
-        if(other.gameObject.CompareTag("SpeedChange Pick Up"))
+        /*if(other.gameObject.CompareTag("SpeedChange Pick Up"))
         {
             SpeedChangePickUp script = other.GetComponent<SpeedChangePickUp>();
             script.OnPickUp();
@@ -106,7 +108,7 @@ public class PlayerControllerTemp : MonoBehaviour {
             speed = script.GetNewSpeed(speed);
             CurrentSpeedPowerupLength = SpeedPowerupLength;
             UIManager.SetPlayerSpeedText(speed);
-        }
+        }*/
 
         if (other.gameObject.CompareTag("Mirror"))
         {
@@ -171,6 +173,18 @@ public class PlayerControllerTemp : MonoBehaviour {
     public Slider GetControlSlider()
     {
         return ControlSlider;
+    }
+
+    public void SetSpeedWithDiff(float speedDiff)
+    {
+        speed = Mathf.Clamp(speed + speedDiff, speedMin, speedMax);
+        UIManager.SetPlayerSpeedText(speed);
+    }
+
+    public void SetSpeed(float targetSpeed)
+    {
+        speed = Mathf.Clamp(targetSpeed, speedMin, speedMax);
+        UIManager.SetPlayerSpeedText(speed);
     }
 }
 
