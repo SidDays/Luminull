@@ -19,9 +19,20 @@ public class PlayerControllerTemp : MonoBehaviour {
 
     public UIManager UIManager;
 
+    private GameStateController GameStateController;
+
     private int score;
+    private float CachedSpeed;
     //private float CurrentSpeedPowerupLength = 0.0f;
     //private float CachedSpeed = 1.0f;
+
+    void Awake()
+    {
+        GameObject game = GameObject.Find("Game State Controller");
+        if (game == null)
+            Debug.LogError("PlayerControllerTemp: Can not find Game State Controller.");
+        GameStateController = game.GetComponent<GameStateController>();
+    }
 
     void Start()
     {
@@ -34,7 +45,7 @@ public class PlayerControllerTemp : MonoBehaviour {
         Physics.IgnoreCollision(NewLaser.GetComponent<Collider>(), GetComponent<Collider>());
         */
         if (UIManager == null)
-            Debug.LogError("PlayerController doesn't have UIManager! Drag UIManager from prefab to scene and insert it into PlayController.\n");
+            Debug.LogError("PlayerController doesn't have UI! Drag UI prefab to scene and insert it into PlayController.\n");
         UIManager.SetPlayerSpeedText(speed);
         score = 0;
      }
@@ -121,15 +132,11 @@ public class PlayerControllerTemp : MonoBehaviour {
         }
         if (other.gameObject.CompareTag("Wall"))
         {
-            UIManager.ToggleGameOverText();
-            UIManager.TogglePlayAgainButton();
-            //UnityEditor.EditorApplication.isPlaying = false;
+            GameStateController.OnPlayerLose();
         }
         if (other.gameObject.CompareTag("Finish"))
         {
-            UIManager.ToggleWinText();
-            UIManager.TogglePlayAgainButton();
-            //UnityEditor.EditorApplication.isPlaying = false;
+            GameStateController.OnPlayerWin();
         }
     }
 
@@ -185,6 +192,17 @@ public class PlayerControllerTemp : MonoBehaviour {
     {
         speed = Mathf.Clamp(targetSpeed, speedMin, speedMax);
         UIManager.SetPlayerSpeedText(speed);
+    }
+
+    public void OnPause()
+    {
+        CachedSpeed = speed;
+        speed = 0;
+    }
+
+    public void OnResume()
+    {
+        speed = CachedSpeed;
     }
 }
 

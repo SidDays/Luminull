@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-
     public GameObject Player;
     public Text playerScoreText;
     public Text playerSpeedText;
@@ -12,8 +11,16 @@ public class UIManager : MonoBehaviour {
     public Text WinText;
     public Button PlayAgainButton;
     public Slider MainSliderControl;
-    public Button SpeedUpButton;
-    public Button SpeedDownButton;
+
+    private GameStateController GameStateController;
+
+    void Awake()
+    {
+        GameObject game = GameObject.Find("Game State Controller");
+        if (game == null)
+            Debug.LogError("UIManager: Can not find Game State Controller in the scene.\n");
+        GameStateController = game.GetComponent<GameStateController>();
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -58,5 +65,10 @@ public class UIManager : MonoBehaviour {
         {
             playerController.SetSpeedWithDiff(diff);
         }
+    }
+
+    public void OnPauseButtonClick()
+    {
+        GameStateController.OnGamePause();
     }
 }
