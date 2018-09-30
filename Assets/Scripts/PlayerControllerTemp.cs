@@ -130,10 +130,10 @@ public class PlayerControllerTemp : MonoBehaviour {
                 other.gameObject.GetComponent<ReflectObject>().MirrorHit = true;
             }
         }
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            GameStateController.OnPlayerLose();
-        }
+        //if (other.gameObject.CompareTag("Wall"))
+        //{
+        //    GameStateController.OnPlayerLose();
+        //}
         if (other.gameObject.CompareTag("Finish"))
         {
             GameStateController.OnPlayerWin();
