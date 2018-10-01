@@ -36,6 +36,6 @@ public class Timer : MonoBehaviour {
 
     public float GetElapsedTime()
     {
-        return Time.time - startTime;
+        return PlayedTime;
     }
 }

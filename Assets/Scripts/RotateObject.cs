@@ -7,6 +7,12 @@ using UnityEngine.EventSystems;
 public class RotateObject : MonoBehaviour {
 
     public Material HighlightMaterial;
+    public float DegreesToRotateX = 0.0f;
+    public float DegreesToRotateY = 45.0f;
+    public float DegreesToRotateZ = 0.0f;
+    public bool RotateOnX = false;
+    public bool RotateOnY = true;
+    public bool RotateOnZ = false;
 
     private static readonly float MirrorRotateSpeed = 50;//100;
     private float _sensitivity;
@@ -51,11 +57,11 @@ public class RotateObject : MonoBehaviour {
 
             _mouseOffset = (Input.mousePosition - _mouseReference);
 
-            // apply rotation
+            /*// apply rotation
             _rotation.y = -(ControlSlider.value - 0.5f)*10;//-(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
             // rotate
             float YRotation = -(ControlSlider.value - 0.5f)*90;
-            transform.localEulerAngles = new Vector3(0,_originalYRotation + YRotation,0);
+            transform.localEulerAngles = new Vector3(0,_originalYRotation + YRotation,0);*/
             //transform.Rotate(_rotation);
 
             // store mouse
@@ -76,7 +82,23 @@ public class RotateObject : MonoBehaviour {
 
     void OnMouseUp()
     {
-        if(_mouseDown && _selectionValid)
+        // apply rotation
+        //_rotation.y = -(ControlSlider.value - 0.5f) * 10;//-(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
+        // rotate
+        if (RotateOnX)
+        {
+            transform.Rotate(new Vector3(DegreesToRotateX, 0, 0));
+        }
+        if (RotateOnY)
+        {
+            transform.Rotate(new Vector3(0, DegreesToRotateY, 0));
+        }
+        if (RotateOnZ)
+        {
+            transform.Rotate(new Vector3(0, 0, DegreesToRotateZ));
+        }
+
+        /*if(_mouseDown && _selectionValid)
         {
             _isSelected = !_isSelected;
             if(_isSelected)
@@ -103,7 +125,7 @@ public class RotateObject : MonoBehaviour {
         }
         // rotating flag
         _isRotating = false;
-        _mouseDown = false;
+        _mouseDown = false;*/
     }
 
     private void OnMouseEnter()
