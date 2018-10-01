@@ -28,4 +28,9 @@ public class Timer : MonoBehaviour {
         timerText.text = "Time: " + minutes + ":" + seconds;
 
 	}
+
+    public float GetElapsedTime()
+    {
+        return Time.time - startTime;
+    }
 }

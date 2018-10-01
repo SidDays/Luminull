@@ -119,14 +119,21 @@ public class PlayerControllerTemp : MonoBehaviour {
         }
         if (other.gameObject.CompareTag("Wall"))
         {
-            UIManager.ToggleGameOverText();
+            UIManager.SetFinalTimeText();
+            UIManager.SetFinalScoreText();
             UIManager.TogglePlayAgainButton();
+            UIManager.ToggleFinalScorePanel();
+            //UIManager.ToggleGameOverText();
+            //UIManager.TogglePlayAgainButton();
             //UnityEditor.EditorApplication.isPlaying = false;
         }
         if (other.gameObject.CompareTag("Finish"))
         {
-            UIManager.ToggleWinText();
+            //UIManager.ToggleWinText();
+            UIManager.SetFinalTimeText();
+            UIManager.SetFinalScoreText();
             UIManager.TogglePlayAgainButton();
+            UIManager.ToggleFinalScorePanel();
             //UnityEditor.EditorApplication.isPlaying = false;
         }
     }
