@@ -231,10 +231,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Colliding: 0
+  ControlSlider: {fileID: 0}
   LaserObject: {fileID: 1659912312856286, guid: 200a5d3150ff53941b984bff6ff48c0b,
     type: 2}
+  PlayerSelectedObject: {fileID: 0}
   speed: 5
+  SpeedPowerupLength: 5
   LaserSpawnSpeed: 0.01
+  UIManager: {fileID: 0}
 --- !u!54 &156096873
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -262,6 +266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 2111312857}
+  Player: {fileID: 0}
+  CameraTurnSpeed: 100
 --- !u!1001 &306741636
 Prefab:
   m_ObjectHideFlags: 0
@@ -304,18 +310,6 @@ Prefab:
     - target: {fileID: 1226914188996548, guid: 9ed3966efbe7dfb4a99b1fa254260916, type: 2}
       propertyPath: m_Name
       value: Mirror (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172611401416238, guid: 9ed3966efbe7dfb4a99b1fa254260916, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172611401416238, guid: 9ed3966efbe7dfb4a99b1fa254260916, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172611401416238, guid: 9ed3966efbe7dfb4a99b1fa254260916, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -141.23901
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ed3966efbe7dfb4a99b1fa254260916, type: 2}
@@ -824,3 +818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 156096866}
+  CameraForward: {fileID: 0}
+  distanceOffset: 4.75
+  speed: 15
+  CameraEulerAngles: {x: 0, y: 0, z: 0}
+  CurrentCameraDirection: 2

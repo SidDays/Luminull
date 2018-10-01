@@ -10,16 +10,29 @@ public class PlayerControllerTemp : MonoBehaviour {
     public Slider ControlSlider;
     public GameObject LaserObject;
     public GameObject PlayerSelectedObject;
-    public float speed = 15.0f;
-    public float SpeedPowerupLength = 5.0f;
+    public float speed = 2.0f;
+    public float speedMin = 1.0f;
+    public float speedMax = 20.0f;
+    //public float SpeedPowerupLength = 5.0f;
     public static float LaserNormalSpeed = 0.5f;
     public float LaserSpawnSpeed = LaserNormalSpeed;
 
     public UIManager UIManager;
 
+    private GameStateController GameStateController;
+
     private int score;
-    private float CurrentSpeedPowerupLength = 0.0f;
-    private float CachedSpeed = 1.0f;
+    private float CachedSpeed;
+    //private float CurrentSpeedPowerupLength = 0.0f;
+    //private float CachedSpeed = 1.0f;
+
+    void Awake()
+    {
+        GameObject game = GameObject.Find("Game State Controller");
+        if (game == null)
+            Debug.LogError("PlayerControllerTemp: Can not find Game State Controller.");
+        GameStateController = game.GetComponent<GameStateController>();
+    }
 
     void Start()
     {
@@ -32,14 +45,14 @@ public class PlayerControllerTemp : MonoBehaviour {
         Physics.IgnoreCollision(NewLaser.GetComponent<Collider>(), GetComponent<Collider>());
         */
         if (UIManager == null)
-            Debug.LogError("PlayerController doesn't have UIManager! Drag UIManager from prefab to scene and insert it into PlayController.\n");
+            Debug.LogError("PlayerController doesn't have UI! Drag UI prefab to scene and insert it into PlayController.\n");
         UIManager.SetPlayerSpeedText(speed);
         score = 0;
      }
 
     void Update()
     {
-        if(CurrentSpeedPowerupLength > 0.0f)
+        /*if(CurrentSpeedPowerupLength > 0.0f)
         {
             CurrentSpeedPowerupLength -= Time.deltaTime;
             if(CurrentSpeedPowerupLength<=0)
@@ -47,7 +60,7 @@ public class PlayerControllerTemp : MonoBehaviour {
                 speed = CachedSpeed;
                 UIManager.SetPlayerSpeedText(speed);
             }
-        }
+        }*/
 
         if (PlayerSelectedObject == null && ControlSlider.gameObject.activeSelf)
         {
@@ -98,7 +111,7 @@ public class PlayerControllerTemp : MonoBehaviour {
             score += script.score;
             UIManager.SetPlayerScoreText(score);
         }
-        if(other.gameObject.CompareTag("SpeedChange Pick Up"))
+        /*if(other.gameObject.CompareTag("SpeedChange Pick Up"))
         {
             SpeedChangePickUp script = other.GetComponent<SpeedChangePickUp>();
             script.OnPickUp();
@@ -106,7 +119,7 @@ public class PlayerControllerTemp : MonoBehaviour {
             speed = script.GetNewSpeed(speed);
             CurrentSpeedPowerupLength = SpeedPowerupLength;
             UIManager.SetPlayerSpeedText(speed);
-        }
+        }*/
 
         if (other.gameObject.CompareTag("Mirror"))
         {
@@ -119,22 +132,11 @@ public class PlayerControllerTemp : MonoBehaviour {
         }
         if (other.gameObject.CompareTag("Wall"))
         {
-            UIManager.SetFinalTimeText();
-            UIManager.SetFinalScoreText();
-            UIManager.TogglePlayAgainButton();
-            UIManager.ToggleFinalScorePanel();
-            //UIManager.ToggleGameOverText();
-            //UIManager.TogglePlayAgainButton();
-            //UnityEditor.EditorApplication.isPlaying = false;
+            GameStateController.OnPlayerLose();
         }
         if (other.gameObject.CompareTag("Finish"))
         {
-            //UIManager.ToggleWinText();
-            UIManager.SetFinalTimeText();
-            UIManager.SetFinalScoreText();
-            UIManager.TogglePlayAgainButton();
-            UIManager.ToggleFinalScorePanel();
-            //UnityEditor.EditorApplication.isPlaying = false;
+            GameStateController.OnPlayerWin();
         }
     }
 
@@ -178,6 +180,29 @@ public class PlayerControllerTemp : MonoBehaviour {
     public Slider GetControlSlider()
     {
         return ControlSlider;
+    }
+
+    public void SetSpeedWithDiff(float speedDiff)
+    {
+        speed = Mathf.Clamp(speed + speedDiff, speedMin, speedMax);
+        UIManager.SetPlayerSpeedText(speed);
+    }
+
+    public void SetSpeed(float targetSpeed)
+    {
+        speed = Mathf.Clamp(targetSpeed, speedMin, speedMax);
+        UIManager.SetPlayerSpeedText(speed);
+    }
+
+    public void OnPause()
+    {
+        CachedSpeed = speed;
+        speed = 0;
+    }
+
+    public void OnResume()
+    {
+        speed = CachedSpeed;
     }
 }
 

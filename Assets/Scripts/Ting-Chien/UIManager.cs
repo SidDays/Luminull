@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-
     public GameObject Player;
     public Text playerScoreText;
     public Text playerSpeedText;
@@ -23,6 +22,16 @@ public class UIManager : MonoBehaviour {
     private float TopSpeed;
     private float FinalTime;
     private int CurrentScore;
+    private GameStateController GameStateController;
+
+    void Awake()
+    {
+        GameObject game = GameObject.Find("Game State Controller");
+        if (game == null)
+            Debug.LogError("UIManager: Can not find Game State Controller in the scene.\n");
+        GameStateController = game.GetComponent<GameStateController>();
+    }
+
 	// Use this for initialization
 	void Start () {
         Player = GameObject.Find("Player");
@@ -88,5 +97,18 @@ public class UIManager : MonoBehaviour {
     public void ToggleFinalScorePanel()
     {
         FinalScorePanel.SetActive(true);
+    }
+    public void SetPlayerSpeedWithDiff(float diff)
+    {
+        PlayerControllerTemp playerController = Player.GetComponent<PlayerControllerTemp>();
+        if(playerController)
+        {
+            playerController.SetSpeedWithDiff(diff);
+        }
+    }
+
+    public void OnPauseButtonClick()
+    {
+        GameStateController.OnGamePause();
     }
 }

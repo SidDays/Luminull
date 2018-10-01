@@ -5,7 +5,19 @@ using UnityEngine;
 public class PlayerDirectionController : MonoBehaviour
 {
     public GameObject Player;
+    private int deathCount = 1;
+    private GameStateController GameStateController;
 
+    private void Start()
+    {
+
+        GameObject game = GameObject.Find("Game State Controller");
+        if (game == null)
+            Debug.LogError("PlayerControllerTemp: Can not find Game State Controller.");
+            GameStateController = game.GetComponent<GameStateController>();
+
+
+    }
     private void Update()
     {
         transform.position = Player.transform.position;
@@ -13,6 +25,7 @@ public class PlayerDirectionController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("CameraChanger"))
         {
             transform.forward = other.transform.forward;
@@ -21,6 +34,20 @@ public class PlayerDirectionController : MonoBehaviour
         if (other.gameObject.CompareTag("RedirectWall"))
         {
             other.gameObject.GetComponent<RedirectPlayer>().WarpPlayerToRedirectPoint();
+        }
+
+        if (other.gameObject.CompareTag("WallObstacle"))
+        {
+            Debug.Log("Inside PlayerDirectionController");
+            if (deathCount > 0)
+            {
+                deathCount--;
+                other.gameObject.GetComponent<WallObstacle>().WarpPlayerToRedirectPoint1();
+
+            }
+            else{
+                GameStateController.OnPlayerLose();
+            }
         }
     }
 }

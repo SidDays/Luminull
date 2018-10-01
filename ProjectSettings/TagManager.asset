@@ -11,6 +11,7 @@ TagManager:
   - Obstacle
   - SpeedChange Pick Up
   - RedirectWall
+  - Light Orb Pick Up
   layers:
   - Default
   - TransparentFX
