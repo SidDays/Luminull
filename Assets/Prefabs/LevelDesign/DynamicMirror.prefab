@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23485964978476862}
   - component: {fileID: 65793486021965086}
   - component: {fileID: 114283782676014784}
+  - component: {fileID: 114516688198331000}
   m_Layer: 0
   m_Name: DynamicMirror
   m_TagString: Untagged
@@ -56,8 +57,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1226914188996548}
-  m_LocalRotation: {x: -0, y: -0.9433365, z: -0, w: 0.33183777}
-  m_LocalPosition: {x: -1.4401772, y: 2, z: 22.2}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.25, y: 2.1, z: 3.44}
   m_LocalScale: {x: 2, y: 2, z: 0.2}
   m_Children:
   - {fileID: 4319843658621068}
@@ -224,3 +225,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HighlightMaterial: {fileID: 2100000, guid: 83348f116fc8f59408dc346780044282, type: 2}
+  DegreesToRotateX: 0
+  DegreesToRotateY: 45
+  DegreesToRotateZ: 0
+  RotateOnX: 0
+  RotateOnY: 1
+  RotateOnZ: 0
+--- !u!114 &114516688198331000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226914188996548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9b51bcd83d6d44799911aa8b63c399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  breakBy: 0.4

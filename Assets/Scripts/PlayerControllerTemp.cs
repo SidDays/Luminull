@@ -162,6 +162,17 @@ public class PlayerControllerTemp : MonoBehaviour {
         }
     }
 
+    void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Mirror"))
+        {
+            if (other.gameObject.GetComponent<ReflectObject>().MirrorHit)
+            {
+                // Avoid the mirrors from becoming pass-through after first collision, but still keep this property just in case
+                other.gameObject.GetComponent<ReflectObject>().MirrorHit = false;
+            }
+        }
+    }
+
     public void SelectObject(GameObject selected)
     {
         if(PlayerSelectedObject!=null)
