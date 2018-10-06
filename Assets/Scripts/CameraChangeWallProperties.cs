@@ -8,8 +8,8 @@ public class CameraChangeWallProperties : MonoBehaviour {
     {
         LEFT,
         RIGHT,
-        UP,
-        DOWN
+        FORWARD,
+        BACKWARD
     }
     public CameraChangeDirection DirectionToTurn;
 }

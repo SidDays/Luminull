@@ -173,6 +173,11 @@ public class PlayerControllerTemp : MonoBehaviour {
         }
     }
 
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
     public void SelectObject(GameObject selected)
     {
         if(PlayerSelectedObject!=null)

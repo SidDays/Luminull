@@ -11,12 +11,12 @@ public class CollisonDie : MonoBehaviour {
     {
 		if(other.gameObject.tag == "Player")
         {
-			this.health -= this.breakBy;
-			Debug.Log("Health is now " + this.health);
+			health -= breakBy;
+			Debug.Log("Health is now " + health);
 
 			if(health <= 0) {
 				Debug.Log("Breaking this object");
-				Destroy(this.gameObject);
+				Destroy(gameObject);
 			}
 		}
 	}

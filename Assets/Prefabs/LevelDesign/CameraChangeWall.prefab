@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23218413126484068}
   - component: {fileID: 65395422101464726}
   - component: {fileID: 114661354339545526}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CameraChangeWall
   m_TagString: CameraChanger
   m_Icon: {fileID: 0}
@@ -41,13 +41,13 @@ GameObject:
   - component: {fileID: 33537443240632130}
   - component: {fileID: 23348622365016506}
   - component: {fileID: 65984575167314218}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1810191855580838
 GameObject:
   m_ObjectHideFlags: 1
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 33072040512955928}
   - component: {fileID: 23240906173161184}
   - component: {fileID: 65947968137539638}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,8 +100,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383100796541946}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.09, y: 2.21, z: 33.36}
-  m_LocalScale: {x: 7.689, y: 8.2832, z: 5.8121}
+  m_LocalPosition: {x: 0.09, y: 2.21, z: 35.12}
+  m_LocalScale: {x: 6.0926867, y: 8.2832, z: 5.8121}
   m_Children:
   - {fileID: 4065345280821238}
   m_Father: {fileID: 0}
