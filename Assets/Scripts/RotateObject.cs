@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 public class RotateObject : MonoBehaviour {
 
     public Material HighlightMaterial;
+
+    public static GameObject SelectedMirror = null;
+    private GameObject _outline;
+
     public float DegreesToRotateX = 0.0f;
     public float DegreesToRotateY = 45.0f;
     public float DegreesToRotateZ = 0.0f;
@@ -43,6 +47,7 @@ public class RotateObject : MonoBehaviour {
         _mouseDown = false;
         _isSelected = false;
         _currentSliderValue = ControlSlider.value;
+        _outline = this.transform.Find("MirrorOutline").gameObject;
 
     }
 
@@ -68,6 +73,14 @@ public class RotateObject : MonoBehaviour {
             _mouseReference = Input.mousePosition;
             //}
         }
+
+        // Add outline if selected
+        if(SelectedMirror == this.gameObject) {
+            // Debug.Log("Mirror " + this.GetHashCode() + " is still selected.");
+            _outline.SetActive(true);
+        } else {
+            _outline.SetActive(false);
+        }
     }
 
     void OnMouseDown()
@@ -82,6 +95,9 @@ public class RotateObject : MonoBehaviour {
 
     void OnMouseUp()
     {
+        SelectedMirror = this.gameObject;
+        Debug.Log("Mirror " + this.GetHashCode() + " is now selected.");
+
         // apply rotation
         //_rotation.y = -(ControlSlider.value - 0.5f) * 10;//-(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
         // rotate

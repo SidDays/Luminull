@@ -12,7 +12,7 @@ public class CollisonDie : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
         {
 			health -= breakBy;
-			Debug.Log("Health is now " + health);
+			Debug.Log("Health of Mirror " + this.GetHashCode() + " is now " + health);
 
 			if(health <= 0) {
 				Debug.Log("Breaking this object");
