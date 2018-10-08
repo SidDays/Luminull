@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour {
     public Text FinalTimeText;
     public Text TopSpeedText;
     public Text FinalScoreText;
+    public float speedChangeInterval = 0.5f;
 
     static private float TimeMultiplier = 10.0f;
     static private float TopSpeedMultiplier = 5.0f;
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour {
     private float FinalTime;
     private int CurrentScore;
     private GameStateController GameStateController;
+    private float speedChangeCounter;
+    private int speedStatus; // 0: nothing, 1: speedUp, -1: speedDown
 
     void Awake()
     {
@@ -39,11 +42,20 @@ public class UIManager : MonoBehaviour {
         CurrentScore = 0;
         FinalTime = 0;
         SetPlayerScoreText(0);
+        speedStatus = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(speedStatus != 0)
+        {
+            speedChangeCounter += Time.deltaTime;
+            if(speedChangeCounter > speedChangeInterval)
+            {
+                speedChangeCounter = 0;
+                SetPlayerSpeedWithDiff(speedStatus);
+            }
+        }
 	}
 
     public void SetPlayerScoreText(int val)
@@ -98,6 +110,7 @@ public class UIManager : MonoBehaviour {
     {
         FinalScorePanel.SetActive(true);
     }
+
     public void SetPlayerSpeedWithDiff(float diff)
     {
         PlayerControllerTemp playerController = Player.GetComponent<PlayerControllerTemp>();
@@ -110,5 +123,16 @@ public class UIManager : MonoBehaviour {
     public void OnPauseButtonClick()
     {
         GameStateController.OnGamePause();
+    }
+
+    public void OnSpeedChangeButtonDown(bool isSpeedUp)
+    {
+        speedChangeCounter = 0;
+        speedStatus = (isSpeedUp) ? 1 : -1;
+    }
+
+    public void OnSpeedChangeButtonUp()
+    {
+        speedStatus = 0;
     }
 }
