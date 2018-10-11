@@ -47,7 +47,7 @@ public class RotateObject : MonoBehaviour {
         _mouseDown = false;
         _isSelected = false;
         _currentSliderValue = ControlSlider.value;
-        _outline = this.transform.Find("MirrorOutline").gameObject;
+        //_outline = this.transform.Find("MirrorOutline").gameObject;
 
     }
 
@@ -75,12 +75,12 @@ public class RotateObject : MonoBehaviour {
         }
 
         // Add outline if selected
-        if(SelectedMirror == this.gameObject) {
+        /*if(SelectedMirror == this.gameObject) {
             // Debug.Log("Mirror " + this.GetHashCode() + " is still selected.");
             _outline.SetActive(true);
         } else {
             _outline.SetActive(false);
-        }
+        }*/
     }
 
     void OnMouseDown()

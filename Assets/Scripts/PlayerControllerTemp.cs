@@ -69,12 +69,12 @@ public class PlayerControllerTemp : MonoBehaviour {
         LaserSpawnSpeed -= Time.deltaTime;
         if(LaserSpawnSpeed<0.0f)
         {
-            GameObject NewLaser = Instantiate(LaserObject);
+            //GameObject NewLaser = Instantiate(LaserObject);
             //NewLaser.transform.parent = transform;
-            NewLaser.transform.position = transform.position;
-            NewLaser.transform.forward = transform.forward;
-            Physics.IgnoreCollision(NewLaser.GetComponent<Collider>(), GetComponent<Collider>());
-            LaserSpawnSpeed = LaserNormalSpeed;
+            //NewLaser.transform.position = transform.position;
+            //NewLaser.transform.forward = transform.forward;
+            //Physics.IgnoreCollision(NewLaser.GetComponent<Collider>(), GetComponent<Collider>());
+            //LaserSpawnSpeed = LaserNormalSpeed;
         }
         //var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
         /*var z = speed * Time.deltaTime;
