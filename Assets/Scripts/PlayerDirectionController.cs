@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDirectionController : MonoBehaviour
 {
     public GameObject Player;
-    private int deathCount = 1;
+    private static int deathCount = 1;
     private GameStateController GameStateController;
 
     private void Start()
@@ -50,7 +50,7 @@ public class PlayerDirectionController : MonoBehaviour
         }
     }
 
-    public void increaseDeathCount(){
+    public static void increaseDeathCount(){
         deathCount++;
     }
 
