@@ -16,7 +16,6 @@ public class PlayerDirectionController : MonoBehaviour
             Debug.LogError("PlayerControllerTemp: Can not find Game State Controller.");
             GameStateController = game.GetComponent<GameStateController>();
 
-
     }
     private void Update()
     {
@@ -50,4 +49,9 @@ public class PlayerDirectionController : MonoBehaviour
             }
         }
     }
+
+    public void increaseDeathCount(){
+        deathCount++;
+    }
+
 }
