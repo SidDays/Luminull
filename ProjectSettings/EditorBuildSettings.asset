@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Longazo_Level1.unity
     guid: a240ae14971319144afe49153a5dcf9f
+  - enabled: 1
+    path: Assets/Scenes/Karekar_Level1.unity
+    guid: 2613f4a02f2573c4eaf158d0f3aebbbb
   m_configObjects: {}
