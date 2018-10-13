@@ -65,11 +65,11 @@ public class Laser : MonoBehaviour {
 
         while (loopActive)
         {
-            Debug.Log("Physics.Raycast(" + lastLaserPosition + ", " + laserDirection + ", out hit , " + laserDistance + ")");
+            //Debug.Log("Physics.Raycast(" + lastLaserPosition + ", " + laserDirection + ", out hit , " + laserDistance + ")");
             //Debug.DrawRay(lastLaserPosition, laserDirection*1000,Color.green);
             if (Physics.Raycast(lastLaserPosition, laserDirection, out hit, laserDistance,LaserLayerMask) && ((hit.transform.gameObject.tag == bounceTag) || (hit.transform.gameObject.tag == splitTag)))
             {
-                Debug.Log("Bounce");
+                //Debug.Log("Bounce");
                 laserReflected++;
                 vertexCounter += 3;
                 mLineRenderer.positionCount = vertexCounter;
@@ -87,7 +87,7 @@ public class Laser : MonoBehaviour {
                     //Debug.Log("Split");
                     if (laserSplit >= maxSplit)
                     {
-                        Debug.Log("Max split reached.");
+                       //Debug.Log("Max split reached.");
                     }
                     else
                     {
