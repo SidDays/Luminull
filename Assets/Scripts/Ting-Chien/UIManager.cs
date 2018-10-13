@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour {
     public Text playerSpeedText;
     public Text GameOverText;
     public Text WinText;
+    public Text GameStateAnnounceText;
+    public Image PlayerBrightnessFiller;
     public Button PlayAgainButton;
     public Slider MainSliderControl;
     public GameObject FinalScorePanel;
@@ -43,7 +45,7 @@ public class UIManager : MonoBehaviour {
         FinalTime = 0;
         SetPlayerScoreText(0);
         speedStatus = 0;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -122,7 +124,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnPauseButtonClick()
     {
-        GameStateController.OnGamePause();
+        GameStateController.OnGamePause(true);
     }
 
     public void OnSpeedChangeButtonDown(bool isSpeedUp)
@@ -134,5 +136,10 @@ public class UIManager : MonoBehaviour {
     public void OnSpeedChangeButtonUp()
     {
         speedStatus = 0;
+    }
+
+    public void SetPlayerBrightnessFiller(float percentage)
+    {
+        PlayerBrightnessFiller.fillAmount = percentage;
     }
 }

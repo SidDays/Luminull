@@ -6,8 +6,10 @@ public class GameStateController : MonoBehaviour {
 
     public Canvas UI;
     public Canvas PauseMenu;
+    public float PlayerBrightnessBeginValue;
+    public float PlayerBrightnessDecreaseRatePerSec;
 
-    private int PlayerScore;
+    private float PlayerBrightness;
     private UIManager UIManager;
     private PlayerControllerTemp PlayerController;
 
@@ -20,17 +22,24 @@ public class GameStateController : MonoBehaviour {
         if (player == null)
             Debug.Log("GameStateController: Can not find Player in scene.\n");
         PlayerController = player.GetComponent<PlayerControllerTemp>();
+        isGamePaused = false;
     }
 
     // Use this for initialization
     void Start () {
-        isGamePaused = false;
-	}
+        PlayerBrightness = PlayerBrightnessBeginValue;
+        StartCoroutine(BeginCountDownThenStart());
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if(!isGamePaused)
+        {
+            PlayerBrightness -= PlayerBrightnessDecreaseRatePerSec * Time.deltaTime;
+            PlayerBrightness = Mathf.Clamp(PlayerBrightness, 0.0f, 100.0f);
+        }
+        UIManager.SetPlayerBrightnessFiller(PlayerBrightness / 100.0f);
+    }
 
     public void OnPlayerLose()
     {
@@ -39,6 +48,7 @@ public class GameStateController : MonoBehaviour {
         UIManager.TogglePlayAgainButton();
         UIManager.ToggleFinalScorePanel();
         UIManager.TogglePlayAgainButton();
+        OnGamePause(false);
         //UnityEditor.EditorApplication.isPlaying = false;
     }
 
@@ -49,27 +59,65 @@ public class GameStateController : MonoBehaviour {
         UIManager.TogglePlayAgainButton();
         UIManager.ToggleFinalScorePanel();
         UIManager.TogglePlayAgainButton();
+        OnGamePause(false);
         //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     void OnApplicationPause(bool pause)
     {
-        if (pause) OnGamePause();
+        if (pause)
+        {
+            isGamePaused = true;
+            OnGamePause(true);
+        }
+        else
+        {
+            isGamePaused = false;
+            OnGameResume();
+        }
     }
 
-    public void OnGamePause()
+    public void OnGamePause(bool showPauseMenu)
     {
-        UI.enabled = false;
+        isGamePaused = true;
         UIManager.GetComponent<Timer>().isPaused = true;
-        PauseMenu.enabled = true;
+        if(showPauseMenu)
+        {
+            UI.enabled = false;
+            PauseMenu.enabled = true;
+        }
         PlayerController.OnPause();
     }
 
     public void OnGameResume()
     {
-        UI.enabled = true;
+        isGamePaused = false;
         UIManager.GetComponent<Timer>().isPaused = false;
-        PauseMenu.enabled = false;
+        if(UI.enabled == false)
+        {
+            UI.enabled = true;
+            PauseMenu.enabled = false;
+        }
         PlayerController.OnResume();
+    }
+
+    public void SetPlayerBrightnessDiff(float val)
+    {
+        PlayerBrightness += val;
+        PlayerBrightness = Mathf.Clamp(PlayerBrightness, 0.0f, 100.0f);
+    }
+
+    private IEnumerator BeginCountDownThenStart()
+    {
+        PlayerController.SetSpeed(2.0f);
+        OnGamePause(false);
+        for (int sec = 3; sec > 0; sec--)
+        {
+            UIManager.GameStateAnnounceText.text = sec.ToString();
+            yield return new WaitForSeconds(1.0f);
+        }
+        UIManager.GameStateAnnounceText.text = "";
+        UIManager.GameStateAnnounceText.enabled = false;
+        OnGameResume();
     }
 }

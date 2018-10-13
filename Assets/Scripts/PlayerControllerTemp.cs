@@ -10,7 +10,6 @@ public class PlayerControllerTemp : MonoBehaviour {
     public Slider ControlSlider;
     public GameObject LaserObject;
     public GameObject PlayerSelectedObject;
-    public float speed = 2.0f;
     public float speedMin = 1.0f;
     public float speedMax = 20.0f;
     //public float SpeedPowerupLength = 5.0f;
@@ -19,6 +18,7 @@ public class PlayerControllerTemp : MonoBehaviour {
 
     public UIManager UIManager;
 
+    private float speed;
     private GameStateController GameStateController;
 
     private int score;
@@ -48,7 +48,7 @@ public class PlayerControllerTemp : MonoBehaviour {
             Debug.LogError("PlayerController doesn't have UI! Drag UI prefab to scene and insert it into PlayController.\n");
         UIManager.SetPlayerSpeedText(speed);
         score = 0;
-     }
+    }
 
     void Update()
     {
@@ -110,6 +110,12 @@ public class PlayerControllerTemp : MonoBehaviour {
             script.OnPickUp();
             score += script.score;
             UIManager.SetPlayerScoreText(score);
+        }
+        if(other.gameObject.CompareTag("Light Orb Pick Up"))
+        {
+            LightOrbPickUp script = other.GetComponent<LightOrbPickUp>();
+            script.OnPickUp();
+            GameStateController.SetPlayerBrightnessDiff(script.brightness);
         }
         /*if(other.gameObject.CompareTag("SpeedChange Pick Up"))
         {
