@@ -112,14 +112,6 @@ public class UIManager : MonoBehaviour {
             MainCanvas.enabled = false;
         }
 
-        if (MainCamera != null)
-        {
-            if (MainCamera.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>() != null)
-            {
-                MainCamera.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>().enabled = true;
-            }
-        }
-
         ResultsMenu.enabled = true;
     }
 

@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 114331918243932808}
   - component: {fileID: 114243007843506860}
   - component: {fileID: 114797643087238042}
+  - component: {fileID: 114519596504330116}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -457,6 +458,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aafeda968748fe4b99b12cc71791e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114519596504330116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1968292241161158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aafeda968748fe4b99b12cc71791e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114522958068790444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -487,7 +499,7 @@ MonoBehaviour:
   PlayerBrightnessFiller: {fileID: 114838625136727820}
   NextLevelButton: {fileID: 0}
   MainSliderControl: {fileID: 114754665974103250}
-  MainCanvas: {fileID: 0}
+  MainCanvas: {fileID: 223850291035416422}
   ResultsMenu: {fileID: 0}
   FinalCoinsCollectedText: {fileID: 0}
   FinalTimeText: {fileID: 0}
@@ -905,17 +917,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114909320458438908
@@ -1122,7 +1123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -32.299988, y: 18.6}
+  m_AnchoredPosition: {x: -32.30005, y: 18.6}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224178503655883698
@@ -1194,7 +1195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -32.3, y: 114.2}
+  m_AnchoredPosition: {x: -32.30005, y: 114.2}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224658194938950134
