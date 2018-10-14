@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 65818085119552610}
   - component: {fileID: 114030995248485356}
   - component: {fileID: 54669808105519650}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Mirror
   m_TagString: Mirror
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 4029884699215038}
   - component: {fileID: 33976306299741708}
   - component: {fileID: 23894205262994642}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MirrorOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,15 +87,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1226914188996548}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 1.487606, z: 27.541843}
   m_LocalScale: {x: 2, y: 2, z: 0.2}
   m_Children:
   - {fileID: 4029884699215038}
   - {fileID: 4319843658621068}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -141.23901, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!4 &4319843658621068
 Transform:
   m_ObjectHideFlags: 1
@@ -298,11 +298,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HighlightMaterial: {fileID: 2100000, guid: 83348f116fc8f59408dc346780044282, type: 2}
-  DegreesToRotateX: 0
-  DegreesToRotateY: 45
+  DegreesToRotateX: 45
+  DegreesToRotateY: 0
   DegreesToRotateZ: 0
-  RotateOnX: 0
-  RotateOnY: 1
+  RotateOnX: 1
+  RotateOnY: 0
   RotateOnZ: 0
 --- !u!114 &114516688198331000
 MonoBehaviour:

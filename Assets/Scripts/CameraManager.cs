@@ -27,11 +27,11 @@ public class CameraManager : MonoBehaviour {
 
     void Start()
     {
-        XPosition = transform.position.x;
+        /*XPosition = transform.position.x;
         YPosition = transform.position.y;
         CameraEulerAngles = transform.eulerAngles;
         PreviousDirection = Player.transform.forward;
-        ForwardDirection = Target.transform.forward;
+        ForwardDirection = Target.transform.forward;*/
     }
 	// Update is called once per frame
 	void Update () {

@@ -45,9 +45,7 @@ public class GameStateController : MonoBehaviour {
     {
         UIManager.SetFinalTimeText();
         UIManager.SetFinalScoreText();
-        UIManager.TogglePlayAgainButton();
-        UIManager.ToggleFinalScorePanel();
-        UIManager.TogglePlayAgainButton();
+        UIManager.ToggleFinalScorePanel(false);
         OnGamePause(false);
         //UnityEditor.EditorApplication.isPlaying = false;
     }
@@ -56,9 +54,7 @@ public class GameStateController : MonoBehaviour {
     {
         UIManager.SetFinalTimeText();
         UIManager.SetFinalScoreText();
-        UIManager.TogglePlayAgainButton();
-        UIManager.ToggleFinalScorePanel();
-        UIManager.TogglePlayAgainButton();
+        UIManager.ToggleFinalScorePanel(true);
         OnGamePause(false);
         //UnityEditor.EditorApplication.isPlaying = false;
     }

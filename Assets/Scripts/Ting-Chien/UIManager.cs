@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     public GameObject Player;
-    public Text playerScoreText;
-    public Text playerSpeedText;
-    public Text GameOverText;
-    public Text WinText;
+    public GameObject MainCamera;
     public Text GameStateAnnounceText;
     public Image PlayerBrightnessFiller;
-    public Button PlayAgainButton;
+    public Button NextLevelButton;
     public Slider MainSliderControl;
-    public GameObject FinalScorePanel;
+    public Canvas MainCanvas;
+    public Canvas ResultsMenu;
     public Text FinalCoinsCollectedText;
     public Text FinalTimeText;
     public Text TopSpeedText;
     public Text FinalScoreText;
+    public Text PlayAgainButtonText;
     public float speedChangeInterval = 0.5f;
 
     static private float TimeMultiplier = 10.0f;
@@ -35,11 +34,13 @@ public class UIManager : MonoBehaviour {
         if (game == null)
             Debug.LogError("UIManager: Can not find Game State Controller in the scene.\n");
         GameStateController = game.GetComponent<GameStateController>();
+        MainCanvas = GetComponent<Canvas>();
     }
 
 	// Use this for initialization
 	void Start () {
         Player = GameObject.Find("Player");
+        MainCamera = GameObject.Find("Main Camera");
         TopSpeed = 0;
         CurrentScore = 0;
         FinalTime = 0;
@@ -63,7 +64,7 @@ public class UIManager : MonoBehaviour {
     public void SetPlayerScoreText(int val)
     {
         CurrentScore += 0;
-        playerScoreText.text = "Score: " + val.ToString();
+       // playerScoreText.text = "Score: " + val.ToString();
         FinalCoinsCollectedText.text = "Coins: " + val.ToString();
     }
 
@@ -74,7 +75,7 @@ public class UIManager : MonoBehaviour {
             TopSpeed = val;
         }
 
-        playerSpeedText.text = "Speed: " + val.ToString();
+        //playerSpeedText.text = "Speed: " + val.ToString();
         TopSpeedText.text = "Top Speed: " + TopSpeed.ToString();
     }
 
@@ -93,24 +94,33 @@ public class UIManager : MonoBehaviour {
         FinalScoreText.text = "Total: " + TotalScore.ToString();
     }
 
-    public void ToggleGameOverText()
+    public void ToggleFinalScorePanel(bool Won)
     {
-        GameOverText.gameObject.SetActive(true);
-    }
+        if (Won)
+        {
+            NextLevelButton.gameObject.SetActive(true);
+            PlayAgainButtonText.text = "Play Again";
+        }
+        else
+        {
+            NextLevelButton.gameObject.SetActive(false);
+            PlayAgainButtonText.text = "Try Again";
+        }
 
-    public void ToggleWinText()
-    {
-        WinText.gameObject.SetActive(true);
-    }
+        if (MainCanvas)
+        {
+            MainCanvas.enabled = false;
+        }
 
-    public void TogglePlayAgainButton()
-    {
-        PlayAgainButton.gameObject.SetActive(true);
-    }
+        if (MainCamera != null)
+        {
+            if (MainCamera.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>() != null)
+            {
+                MainCamera.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>().enabled = true;
+            }
+        }
 
-    public void ToggleFinalScorePanel()
-    {
-        FinalScorePanel.SetActive(true);
+        ResultsMenu.enabled = true;
     }
 
     public void SetPlayerSpeedWithDiff(float diff)
