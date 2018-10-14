@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDirectionController : MonoBehaviour
 {
     public GameObject Player;
-    private int deathCount = 1;
+    private static int deathCount = 1;
     private GameStateController GameStateController;
 
     private void Start()
@@ -15,7 +15,6 @@ public class PlayerDirectionController : MonoBehaviour
         if (game == null)
             Debug.LogError("PlayerControllerTemp: Can not find Game State Controller.");
             GameStateController = game.GetComponent<GameStateController>();
-
 
     }
     private void Update()
@@ -50,4 +49,9 @@ public class PlayerDirectionController : MonoBehaviour
             }
         }
     }
+
+    public static void increaseDeathCount(){
+        deathCount++;
+    }
+
 }

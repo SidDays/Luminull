@@ -110,6 +110,10 @@ public class PlayerControllerTemp : MonoBehaviour {
             script.OnPickUp();
             score += script.score;
             UIManager.SetPlayerScoreText(score);
+            if(score%10==0)
+            {
+                PlayerDirectionController.increaseDeathCount();
+            }
         }
         if(other.gameObject.CompareTag("Light Orb Pick Up"))
         {
