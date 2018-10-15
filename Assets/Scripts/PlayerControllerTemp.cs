@@ -165,11 +165,15 @@ public class PlayerControllerTemp : MonoBehaviour {
         if (other.gameObject.CompareTag("Wall"))
         {
             GameStateController.SetPlayerBrightnessDiff(-20);
-            if(other.gameObject.GetComponent<WallObstacle>())
+            WallObstacle WallComponent = other.gameObject.GetComponent<WallObstacle>();
+            if (WallComponent != null && WallComponent.RedirectPointTransform != null)
             {
                 other.gameObject.GetComponent<WallObstacle>().WarpPlayerToRedirectPoint1();
             }
-            //GameStateController.OnPlayerLose();
+            else
+            {
+                GameStateController.OnPlayerLose();
+            }
         }
         if (other.gameObject.CompareTag("Finish"))
         {
