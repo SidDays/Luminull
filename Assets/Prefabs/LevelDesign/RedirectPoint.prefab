@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33152834432320360}
   - component: {fileID: 23197965844792520}
   - component: {fileID: 136153865268507410}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RedirectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4101149556686846}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RedirectDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 33285267089092078}
   - component: {fileID: 23678310605095160}
   - component: {fileID: 65592119863128512}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 33360031909369714}
   - component: {fileID: 23372571363749382}
   - component: {fileID: 65726842943389488}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1168063604136328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06403706, y: 2, z: 34.82}
+  m_LocalPosition: {x: 1.517, y: 2, z: 2.04}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children:
   - {fileID: 4101149556686846}

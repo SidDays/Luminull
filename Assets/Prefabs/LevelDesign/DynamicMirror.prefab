@@ -177,9 +177,9 @@ GameObject:
   - component: {fileID: 4215827628146884}
   - component: {fileID: 33933188257933916}
   - component: {fileID: 23318272212005968}
-  - component: {fileID: 65448189688433700}
   - component: {fileID: 114467842724281398}
   - component: {fileID: 54566378484595586}
+  - component: {fileID: 65216964766524932}
   m_Layer: 9
   m_Name: Mirror
   m_TagString: Mirror
@@ -362,15 +362,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018813499846478}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.7, y: 2, z: 40}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -1.66, y: 2, z: 29.54}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4760136020357192}
   - {fileID: 4576269295089378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!4 &4751548791935182
 Transform:
   m_ObjectHideFlags: 1
@@ -895,8 +895,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!65 &65448189688433700
+  m_CollisionDetection: 1
+--- !u!65 &65216964766524932
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -906,8 +906,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0000011, y: 1.0000005, z: 1.0000864}
+  m_Center: {x: -0.00000023841858, y: 0.00000023841858, z: -0.00048828125}
 --- !u!65 &65626973444798912
 BoxCollider:
   m_ObjectHideFlags: 1

@@ -48,7 +48,7 @@ public class GameStateController : MonoBehaviour {
     public void OnPlayerLose()
     {
         UIManager.SetFinalTimeText();
-        UIManager.SetFinalScoreText();
+        UIManager.SetFinalScoreText(false);
         UIManager.ToggleFinalScorePanel(false);
         OnGamePause(false);
         //UnityEditor.EditorApplication.isPlaying = false;
@@ -57,7 +57,7 @@ public class GameStateController : MonoBehaviour {
     public void OnPlayerWin()
     {
         UIManager.SetFinalTimeText();
-        UIManager.SetFinalScoreText();
+        UIManager.SetFinalScoreText(true);
         UIManager.ToggleFinalScorePanel(true);
         OnGamePause(false);
         //UnityEditor.EditorApplication.isPlaying = false;

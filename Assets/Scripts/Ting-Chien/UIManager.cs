@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour {
     public float speedChangeInterval = 0.5f;
 
     static private float TimeMultiplier = 10.0f;
+    static private float MaxTimeScore = 3000;
+    static private float WinningBonus = 2000;
     static private float TopSpeedMultiplier = 5.0f;
     private float TopSpeed;
     private float FinalTime;
@@ -83,15 +85,30 @@ public class UIManager : MonoBehaviour {
     {
         FinalTime = GetComponent<Timer>().GetElapsedTime();
 
-        string minutes = ((int)FinalTime / 60).ToString("f2");
-        string seconds = (FinalTime % 60).ToString("f2");
-        FinalTimeText.text = "Time: " + minutes + ":" + seconds;
+        string minutes = ((int)FinalTime / 60).ToString();
+        int seconds = (int)FinalTime % 60;
+        string secondsString = "";
+        if(seconds < 10)
+        {
+            secondsString = "0" + ((int)FinalTime % 60).ToString();
+        }
+        else
+        {
+            secondsString = ((int)FinalTime % 60).ToString();
+        }
+        FinalTimeText.text = "Time: " + minutes + ":" + secondsString;
     }
 
-    public void SetFinalScoreText()
+    public void SetFinalScoreText(bool Won)
     {
-        float TotalScore = CurrentScore + TopSpeedMultiplier * TopSpeed + TimeMultiplier*FinalTime;
-        FinalScoreText.text = "Total: " + TotalScore.ToString();
+        float TotalScore = CurrentScore + TopSpeedMultiplier * TopSpeed + MaxTimeScore - FinalTime;
+        if (Won)
+        {
+            TotalScore += WinningBonus;
+        }
+
+        int TotalScoreInt = (int)TotalScore;
+        FinalScoreText.text = "Total: " + TotalScoreInt.ToString();
     }
 
     public void ToggleFinalScorePanel(bool Won)

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136828196897963040}
   - component: {fileID: 54707931063226782}
   - component: {fileID: 114758776714221310}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light Orb Pick Up
   m_TagString: Light Orb Pick Up
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625007648062112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.86, y: 1.693, z: 13.065712}
+  m_LocalPosition: {x: -1.26, y: 2, z: 44.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   rotate: {x: 0, y: 0, z: 0}
   floatingSpeed: 0
   floatingHeight: 0
-  brightness: 1
+  brightness: 20
 --- !u!136 &136828196897963040
 CapsuleCollider:
   m_ObjectHideFlags: 1
