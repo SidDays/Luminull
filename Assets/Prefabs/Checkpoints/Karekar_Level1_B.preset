@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Karekar_Level1_B
+  m_TargetType:
+    m_NativeTypeID: 4
+    m_ManagedTypePPtr: {fileID: 0}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_LocalRotation.x
+    value: 0.0000013065511
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalRotation.y
+    value: -0.7071069
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalRotation.z
+    value: 0.0000013065517
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalRotation.w
+    value: 0.70710665
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalPosition.x
+    value: -27.320166
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalPosition.y
+    value: -33.70037
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalPosition.z
+    value: 0.60002744
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalScale.x
+    value: 0.50000024
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalScale.y
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalScale.z
+    value: 0.50000024
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_RootOrder
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalEulerAnglesHint.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalEulerAnglesHint.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_LocalEulerAnglesHint.z
+    value: 0
+    objectReference: {fileID: 0}
