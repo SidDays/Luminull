@@ -37,6 +37,10 @@ public class GameStateController : MonoBehaviour {
         {
             PlayerBrightness -= PlayerBrightnessDecreaseRatePerSec * Time.deltaTime;
             PlayerBrightness = Mathf.Clamp(PlayerBrightness, 0.0f, 100.0f);
+            if(PlayerBrightness <= 0.0f)
+            {
+                OnPlayerLose();
+            }
         }
         UIManager.SetPlayerBrightnessFiller(PlayerBrightness / 100.0f);
     }
