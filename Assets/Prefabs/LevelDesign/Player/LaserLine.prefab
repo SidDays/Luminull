@@ -59,6 +59,8 @@ MonoBehaviour:
   spawnedBeamTag: Laser
   maxBounce: 20
   maxSplit: 0
+  Player: {fileID: 0}
+  LaserLayerMask: 0
 --- !u!120 &120247337044834484
 LineRenderer:
   m_ObjectHideFlags: 1

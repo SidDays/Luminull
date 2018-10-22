@@ -8,8 +8,6 @@ public class CameraManager : MonoBehaviour {
     public GameObject Player;
     private Rigidbody CameraRB;
     public float distanceOffset = 4.75f;
-    float XPosition = 0.0f;
-    float YPosition = 0.0f;
     public float speed = 15.0f;
     public Vector3 CameraEulerAngles;
     public Vector3 PreviousDirection;
