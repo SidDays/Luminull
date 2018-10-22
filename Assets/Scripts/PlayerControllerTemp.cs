@@ -11,7 +11,7 @@ public class PlayerControllerTemp : MonoBehaviour {
     public GameObject LaserObject;
     public GameObject PlayerSelectedObject;
     public float speedMin = 1.0f;
-    public float speedMax = 5.0f;
+    public float speedMax = 3.0f;
     //public float SpeedPowerupLength = 5.0f;
     public static float LaserNormalSpeed = 0.5f;
     public float LaserSpawnSpeed = LaserNormalSpeed;
