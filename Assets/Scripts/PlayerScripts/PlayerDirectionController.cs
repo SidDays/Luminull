@@ -13,7 +13,7 @@ public class PlayerDirectionController : MonoBehaviour
 
         GameObject game = GameObject.Find("Game State Controller");
         if (game == null)
-            Debug.LogError("PlayerControllerTemp: Can not find Game State Controller.");
+            Debug.LogError("PlayerController: Can not find Game State Controller.");
             GameStateController = game.GetComponent<GameStateController>();
 
     }

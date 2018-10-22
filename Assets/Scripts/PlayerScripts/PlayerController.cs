@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerControllerTemp : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     public bool Colliding = false;
     Rigidbody PlayerRB;
@@ -11,7 +11,7 @@ public class PlayerControllerTemp : MonoBehaviour {
     public GameObject LaserObject;
     public GameObject PlayerSelectedObject;
     public float speedMin = 1.0f;
-    public float speedMax = 5.0f;
+    public float speedMax = 3.0f;
     //public float SpeedPowerupLength = 5.0f;
     public static float LaserNormalSpeed = 0.5f;
     public float LaserSpawnSpeed = LaserNormalSpeed;
@@ -30,7 +30,7 @@ public class PlayerControllerTemp : MonoBehaviour {
     {
         GameObject game = GameObject.Find("Game State Controller");
         if (game == null)
-            Debug.LogError("PlayerControllerTemp: Can not find Game State Controller.");
+            Debug.LogError("PlayerController: Can not find Game State Controller.");
         GameStateController = game.GetComponent<GameStateController>();
     }
 
@@ -61,11 +61,6 @@ public class PlayerControllerTemp : MonoBehaviour {
                 UIManager.SetPlayerSpeedText(speed);
             }
         }*/
-
-        if (PlayerSelectedObject == null && ControlSlider.gameObject.activeSelf)
-        {
-            ControlSlider.gameObject.SetActive(false);
-        }
         LaserSpawnSpeed -= Time.deltaTime;
         if(LaserSpawnSpeed<0.0f)
         {

@@ -134,7 +134,7 @@ public class UIManager : MonoBehaviour {
 
     public void SetPlayerSpeedWithDiff(float diff)
     {
-        PlayerControllerTemp playerController = Player.GetComponent<PlayerControllerTemp>();
+        PlayerController playerController = Player.GetComponent<PlayerController>();
         if(playerController)
         {
             playerController.SetSpeedWithDiff(diff);

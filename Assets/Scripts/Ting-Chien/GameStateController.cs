@@ -11,7 +11,7 @@ public class GameStateController : MonoBehaviour {
 
     private float PlayerBrightness;
     private UIManager UIManager;
-    private PlayerControllerTemp PlayerController;
+    private PlayerController playerController;
 
     private bool isGamePaused;
 
@@ -21,7 +21,7 @@ public class GameStateController : MonoBehaviour {
         GameObject player = GameObject.Find("Player");
         if (player == null)
             Debug.Log("GameStateController: Can not find Player in scene.\n");
-        PlayerController = player.GetComponent<PlayerControllerTemp>();
+        playerController = player.GetComponent<PlayerController>();
         isGamePaused = false;
     }
 
@@ -86,7 +86,7 @@ public class GameStateController : MonoBehaviour {
             UI.enabled = false;
             PauseMenu.enabled = true;
         }
-        PlayerController.OnPause();
+        playerController.OnPause();
     }
 
     public void OnGameResume()
@@ -98,7 +98,7 @@ public class GameStateController : MonoBehaviour {
             UI.enabled = true;
             PauseMenu.enabled = false;
         }
-        PlayerController.OnResume();
+        playerController.OnResume();
     }
 
     public void SetPlayerBrightnessDiff(float val)
@@ -109,7 +109,7 @@ public class GameStateController : MonoBehaviour {
 
     private IEnumerator BeginCountDownThenStart()
     {
-        PlayerController.SetSpeed(2.0f);
+        playerController.SetSpeed(2.0f);
         OnGamePause(false);
         for (int sec = 3; sec > 0; sec--)
         {
