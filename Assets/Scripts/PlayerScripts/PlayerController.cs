@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     private int score;
     private float CachedSpeed;
+    private GameObject ProgressSaver;
     //private float CurrentSpeedPowerupLength = 0.0f;
     //private float CachedSpeed = 1.0f;
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour {
         if (game == null)
             Debug.LogError("PlayerController: Can not find Game State Controller.");
         GameStateController = game.GetComponent<GameStateController>();
+        ProgressSaver = GameObject.Find("ProgressSaver");
     }
 
     void Start()
@@ -173,6 +175,10 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("Finish"))
         {
             GameStateController.OnPlayerWin();
+            if(ProgressSaver!=null)
+            {
+                ProgressSaver.GetComponent<SaveProgress>().SaveLevelProgress();
+            }
         }
     }
 
