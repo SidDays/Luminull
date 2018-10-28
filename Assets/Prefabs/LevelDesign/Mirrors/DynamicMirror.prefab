@@ -972,6 +972,7 @@ MonoBehaviour:
   RotateOnX: 0
   RotateOnY: 1
   RotateOnZ: 0
+  MirrorNumber: -1
 --- !u!135 &135884021910842600
 SphereCollider:
   m_ObjectHideFlags: 1

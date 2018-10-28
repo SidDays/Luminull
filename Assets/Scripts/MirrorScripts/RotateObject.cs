@@ -18,6 +18,9 @@ public class RotateObject : MonoBehaviour {
     public bool RotateOnY = true;
     public bool RotateOnZ = false;
 
+    [Tooltip("Specify the sequence number of this mirror, must start from 0")]
+    public int MirrorNumber = -1;
+
     private float _currentSliderValue;
     private Vector3 _mouseReference;
     private bool _isSelected = false;
@@ -68,6 +71,11 @@ public class RotateObject : MonoBehaviour {
         {
             transform.Rotate(new Vector3(0, 0, DegreesToRotateZ));
         }
+    }
+
+    public void Rotate()
+    {
+        OnMouseUp();
     }
 
     public void Deselect()

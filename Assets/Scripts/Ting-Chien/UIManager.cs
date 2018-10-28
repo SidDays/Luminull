@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour {
     private float FinalTime;
     private int CurrentScore;
     private GameStateController GameStateController;
+    private MirrorManager MirrorManager;
     private float speedChangeCounter;
     private int speedStatus; // 0: nothing, 1: speedUp, -1: speedDown
 
@@ -36,6 +37,8 @@ public class UIManager : MonoBehaviour {
         if (game == null)
             Debug.LogError("UIManager: Can not find Game State Controller in the scene.\n");
         GameStateController = game.GetComponent<GameStateController>();
+        MirrorManager = game.GetComponent<MirrorManager>();
+
         MainCanvas = GetComponent<Canvas>();
     }
 
@@ -160,5 +163,20 @@ public class UIManager : MonoBehaviour {
     public void SetPlayerBrightnessFiller(float percentage)
     {
         PlayerBrightnessFiller.fillAmount = percentage;
+    }
+
+    public void OnRotateMirrorButtonClick()
+    {
+        MirrorManager.RotateCurrentSelectedMirror();
+    }
+
+    public void OnPreviousMirrorButtonClick()
+    {
+        MirrorManager.SelectPreviousMirror();
+    }
+
+    public void OnNextMirrorButtonClick()
+    {
+        MirrorManager.SelectNextMirror();
     }
 }
