@@ -11,6 +11,9 @@ public class RotateObject : MonoBehaviour {
     public static GameObject SelectedMirror = null;
     private GameObject _outline;
 
+    /// Required to select mirror on tap, MirrorManager initializes this itself
+    public MirrorManager mirrorManager;
+
     public float DegreesToRotateX = 0.0f;
     public float DegreesToRotateY = 45.0f;
     public float DegreesToRotateZ = 0.0f;
@@ -67,6 +70,12 @@ public class RotateObject : MonoBehaviour {
 
     void OnMouseUp()
     {
+        mirrorManager.SelectCertainMirror(MirrorNumber);
+        Select();
+    }
+
+    public void Rotate()
+    {
         if (RotateOnX)
         {
             transform.Rotate(new Vector3(DegreesToRotateX, 0, 0));
@@ -81,11 +90,7 @@ public class RotateObject : MonoBehaviour {
         }
     }
 
-    public void Rotate()
-    {
-        OnMouseUp();
-    }
-
+    /// <summary>Only updates the outline visibility. MirrorManager controls which mirror is actually selected</summary>
     public void Select() {
         _isSelected = true;
         SelectedMirror = this.gameObject;

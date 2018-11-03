@@ -17,6 +17,7 @@ public class MirrorManager : MonoBehaviour {
         for(int i = 0; i < mirrorsWithTag.Length; i++)
         {
             RotateObject mirror = mirrorsWithTag[i].GetComponentInParent<RotateObject>();
+            mirror.mirrorManager = this; 
             if(mirror.MirrorNumber > -1)
             {
                 size++;
@@ -90,6 +91,21 @@ public class MirrorManager : MonoBehaviour {
                 currentMirror.Select();
                 break;
             }
+        }
+    }
+
+    public void SelectCertainMirror(int mirrorNumber)
+    {
+        currentMirror.Deselect();
+        if (mirrorNumber >= 0 && mirrorNumber < Mirrors.Length && bIsMirrorAvailable[mirrorNumber])
+        {
+            current = mirrorNumber;
+            currentMirror = Mirrors[current];
+            currentMirror.Select();
+        }
+        else
+        {
+            Debug.LogWarning("The mirror " + mirrorNumber + " cannot be selected.");
         }
     }
 
