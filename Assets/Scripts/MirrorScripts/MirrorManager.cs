@@ -55,6 +55,7 @@ public class MirrorManager : MonoBehaviour {
 
         current = 0;
         currentMirror = Mirrors[current];
+        currentMirror.Select();
 	}
 	
     public void RotateCurrentSelectedMirror()
@@ -64,12 +65,14 @@ public class MirrorManager : MonoBehaviour {
 
 	public void SelectNextMirror()
     {
+        currentMirror.Deselect();
         for(int i = current+1; i < Mirrors.Length; i++)
         {
             if (bIsMirrorAvailable[i])
             {
                 current = i;
                 currentMirror = Mirrors[current];
+                currentMirror.Select();
                 break;
             }
         }
@@ -77,12 +80,14 @@ public class MirrorManager : MonoBehaviour {
 
     public void SelectPreviousMirror()
     {
+        currentMirror.Deselect();
         for (int i = current - 1; i >= 0; i--)
         {
             if (bIsMirrorAvailable[i])
             {
                 current = i;
                 currentMirror = Mirrors[current];
+                currentMirror.Select();
                 break;
             }
         }

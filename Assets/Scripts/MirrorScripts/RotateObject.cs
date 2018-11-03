@@ -36,8 +36,17 @@ public class RotateObject : MonoBehaviour {
 
         _isSelected = false;
         //_currentSliderValue = ControlSlider.value;
-        //_outline = this.transform.Find("MirrorOutline").gameObject;
 
+        // Set a reference to the outline. Some Mirror objects don't have MirrorOutline as a direct child, so this hacky fix is required
+        Transform outlineTransform = this.transform.Find("MirrorOutline");
+        if (outlineTransform == null) {
+            outlineTransform = this.transform.GetChild(0).transform.Find("MirrorOutline");
+        }
+        if (outlineTransform != null) {
+            _outline = outlineTransform.gameObject;
+        } else {
+            Debug.LogWarning("Outline for Mirror " + this.GetHashCode() + " was not found!");
+        }
     }
 
     void Update()
@@ -48,17 +57,16 @@ public class RotateObject : MonoBehaviour {
         }
 
         // Add outline if selected
-        /*if(SelectedMirror == this.gameObject) {
+        if(SelectedMirror == this.gameObject) {
             // Debug.Log("Mirror " + this.GetHashCode() + " is still selected.");
             _outline.SetActive(true);
         } else {
             _outline.SetActive(false);
-        }*/
+        }
     }
 
     void OnMouseUp()
     {
-        SelectedMirror = this.gameObject;
         if (RotateOnX)
         {
             transform.Rotate(new Vector3(DegreesToRotateX, 0, 0));
@@ -78,11 +86,19 @@ public class RotateObject : MonoBehaviour {
         OnMouseUp();
     }
 
+    public void Select() {
+        _isSelected = true;
+        SelectedMirror = this.gameObject;
+    }
+
     public void Deselect()
     {
-        Material[] mats = GetComponent<Renderer>().materials;
-        mats[0] = DefaultMaterial;
-        GetComponent<Renderer>().materials = mats;
+        // This code probably used to make the selected mirror orange
+        // Material[] mats = GetComponent<Renderer>().materials;
+        // mats[0] = DefaultMaterial;
+        // GetComponent<Renderer>().materials = mats;
+
         _isSelected = false;
+        SelectedMirror = null;
     }
 }
