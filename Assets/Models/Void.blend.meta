@@ -12,6 +12,8 @@ ModelImporter:
     100012: b4
     100014: Wall
     100016: Face
+    100018: Bones
+    100020: Hair
     400000: LHUMERUS01_001
     400002: RHUMERUS01_000
     400004: //RootNode
@@ -21,6 +23,8 @@ ModelImporter:
     400012: b4
     400014: Wall
     400016: Face
+    400018: Bones
+    400020: Hair
     2100000: WHITE_BONE_001
     2100002: WHITE_BONE_000
     2100004: WHITE_BONE_003
@@ -36,6 +40,8 @@ ModelImporter:
     2300010: b4
     2300012: Wall
     2300014: Face
+    2300016: Bones
+    2300018: Hair
     3300000: LHUMERUS01_001
     3300002: RHUMERUS01_000
     3300004: b1
@@ -44,6 +50,8 @@ ModelImporter:
     3300010: b4
     3300012: Wall
     3300014: Face
+    3300016: Bones
+    3300018: Hair
     4300000: LHUMERUS01_001
     4300002: RHUMERUS01_000
     4300004: b2
@@ -52,6 +60,8 @@ ModelImporter:
     4300010: b3
     4300012: Wall
     4300014: Face
+    4300016: Hair
+    4300018: Bones
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
