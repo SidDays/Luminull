@@ -54,16 +54,12 @@ public class RotateObject : MonoBehaviour {
 
     void Update()
     {
-        if (_isSelected && _currentSliderValue != ControlSlider.value)
-        {
-            _currentSliderValue = ControlSlider.value;
-        }
 
         // Add outline if selected
-        if(SelectedMirror == this.gameObject) {
+        if(SelectedMirror == this.gameObject && _outline != null) {
             // Debug.Log("Mirror " + this.GetHashCode() + " is still selected.");
             _outline.SetActive(true);
-        } else {
+        } else if(_outline !=null) {
             _outline.SetActive(false);
         }
     }
