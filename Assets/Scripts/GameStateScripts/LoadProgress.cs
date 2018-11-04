@@ -41,7 +41,8 @@ public class LoadProgress : MonoBehaviour {
                 else if (CurrentLevelsCompleted > i)
                 {
                     ProgressIcon.GetComponent<Image>().sprite = LevelCompletedIcon;
-                    ProgressIcon.GetComponent<Image>().enabled = true;
+                    LevelPanel.transform.GetChild(i).GetComponent<Image>().sprite = LevelCompletedIcon;
+                    ProgressIcon.GetComponent<Image>().enabled = false;
                     LevelPanel.transform.GetChild(i).GetComponent<Button>().interactable = true;
                 }
                 else if (CurrentLevelsCompleted < i)
