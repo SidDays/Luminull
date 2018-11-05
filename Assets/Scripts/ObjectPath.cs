@@ -28,7 +28,10 @@ public class ObjectPath : MonoBehaviour {
             {
                 if(i<=PathWaypoints.Count-2)
                 {
-                    Gizmos.DrawLine(PathWaypoints[i].position, PathWaypoints[i + 1].position);
+                    if (PathWaypoints[i] != null)
+                    {
+                        Gizmos.DrawLine(PathWaypoints[i].position, PathWaypoints[i + 1].position);
+                    }
                 }
             }
         }
