@@ -28,8 +28,10 @@ public class UIManager : MonoBehaviour {
     private int CurrentScore;
     private GameStateController GameStateController;
     private MirrorManager MirrorManager;
-    private float speedChangeCounter;
-    private int speedStatus; // 0: nothing, 1: speedUp, -1: speedDown
+    private float speedChangeCounter; // Deprecated
+    private int speedStatus; // 0: nothing, 1: speedUp, -1: speedDown - Deprecated
+    private float speedChangeDelayCounter;
+    private SpeedChangeIndicator speedChangeIndicator;
 
     void Awake()
     {
@@ -51,11 +53,13 @@ public class UIManager : MonoBehaviour {
         FinalTime = 0;
         SetPlayerScoreText(0);
         speedStatus = 0;
+        speedChangeIndicator = GetComponentInChildren<SpeedChangeIndicator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(speedStatus != 0)
+        // speed button event - Deprecated
+        if (speedStatus != 0)
         {
             speedChangeCounter += Time.deltaTime;
             if(speedChangeCounter > speedChangeInterval)
@@ -64,7 +68,37 @@ public class UIManager : MonoBehaviour {
                 SetPlayerSpeedWithDiff(speedStatus);
             }
         }
-	}
+
+        if(speedChangeDelayCounter <= 0)
+        {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                // Get movement of the finger since last frame
+                Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                if (touchDeltaPosition.sqrMagnitude > 1000.0f)
+                {
+                    PlayerController playerController = Player.GetComponent<PlayerController>();
+                    if (touchDeltaPosition.y > 0)
+                    {
+                        SetPlayerSpeedWithDiff(1);
+                        speedChangeIndicator.enabled = true;
+                        speedChangeIndicator.show(Input.GetTouch(0).position, playerController.GetSpeed(), true);
+                    }
+                    else
+                    {
+                        SetPlayerSpeedWithDiff(-1);
+                        speedChangeIndicator.enabled = true;
+                        speedChangeIndicator.show(Input.GetTouch(0).position, playerController.GetSpeed(), false);
+                    }
+                    speedChangeDelayCounter = speedChangeInterval;
+                }
+            }
+        }
+        else
+        {
+            speedChangeDelayCounter -= Time.deltaTime;
+        }
+    }
 
     public void SetPlayerScoreText(int val)
     {
@@ -149,12 +183,13 @@ public class UIManager : MonoBehaviour {
         GameStateController.OnGamePause(true);
     }
 
+    // speed button click event - Deprecated
     public void OnSpeedChangeButtonDown(bool isSpeedUp)
     {
         speedChangeCounter = 0;
         speedStatus = (isSpeedUp) ? 1 : -1;
     }
-
+    // speed button click event - Deprecated
     public void OnSpeedChangeButtonUp()
     {
         speedStatus = 0;
