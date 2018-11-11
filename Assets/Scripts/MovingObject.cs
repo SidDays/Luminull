@@ -9,6 +9,8 @@ public class MovingObject : MonoBehaviour {
     public float MoveSpeed = 5f;
     public float DelayOnEnd = 0f;
 
+    private GameObject Player;
+    private Transform WarningCollider;
     private Vector3 StartingPosition;
     private Transform CurrentWaypoint;
     private int CurrentWaypointIndex;
@@ -18,6 +20,9 @@ public class MovingObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Player = GameObject.Find("Player");
+        
+        WarningCollider = transform.Find("WarningCollider");
         if (PathToFollow.PathValid())
         {
             StartingPosition = transform.position;
@@ -34,6 +39,14 @@ public class MovingObject : MonoBehaviour {
             if (PathToFollow.PathValid())
             {
                 transform.position = Vector3.MoveTowards(transform.position, CurrentWaypoint.position, MoveSpeed*Time.deltaTime);
+
+                if(WarningCollider!=null)
+                {
+                    Vector3 TravelDirection = CurrentWaypoint.position - transform.position;
+                    TravelDirection.Normalize();
+                    WarningCollider.position = transform.position + TravelDirection * 3;
+                }
+
                 if(Vector3.Distance(transform.position,CurrentWaypoint.position) < .1f)
                 { 
                     if(CurrentWaypointIndex + 1 < PathToFollow.PathWaypoints.Count)

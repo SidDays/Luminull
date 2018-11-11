@@ -15,6 +15,7 @@ TagManager:
   - WallObstacle
   - RefractionObject
   - Laser
+  - PlayerWarning
   layers:
   - Default
   - TransparentFX
