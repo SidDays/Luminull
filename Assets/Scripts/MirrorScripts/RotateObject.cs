@@ -67,6 +67,7 @@ public class RotateObject : MonoBehaviour {
     void OnMouseUp()
     {
         mirrorManager.SelectCertainMirror(MirrorNumber);
+        Debug.Log("Selected mirror");
         Select();
     }
 

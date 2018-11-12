@@ -8,7 +8,7 @@ public class PlayerCameraChanger : MonoBehaviour {
     public float CameraTurnSpeed = 100.0f;
 	void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("CameraChanger"))
+        /*if (other.gameObject.CompareTag("CameraChanger"))
         {
             CameraChangeWallProperties CameraWallProperties = other.gameObject.GetComponent<CameraChangeWallProperties>();
             if (CameraWallProperties.DirectionToTurn == CameraChangeWallProperties.CameraChangeDirection.LEFT)
@@ -27,13 +27,13 @@ public class PlayerCameraChanger : MonoBehaviour {
             MainCamera.transform.rotation = Quaternion.LookRotation(NewDir);
             Vector3 CameraEulerAngles = MainCamera.transform.eulerAngles;
             CameraEulerAngles.x = OriginalXRot;
-            MainCamera.transform.eulerAngles = CameraEulerAngles;*/
+            MainCamera.transform.eulerAngles = CameraEulerAngles;
 
             /*Vector3 CameraPosition = MainCamera.transform.position;
             float OriginalYPosition = CameraPosition.y;
             CameraPosition = Player.transform.position + MainCamera.transform.forward*MainCamera.GetComponent<CameraManager>().distanceOffset;
             CameraPosition.y = OriginalYPosition;
-            MainCamera.transform.position = CameraPosition;*/
-        }
+            MainCamera.transform.position = CameraPosition;
+        }*/
     }
 }
