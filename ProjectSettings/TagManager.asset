@@ -16,6 +16,8 @@ TagManager:
   - RefractionObject
   - Laser
   - PlayerWarning
+  - Checkpt1
+  - Beam
   layers:
   - Default
   - TransparentFX
