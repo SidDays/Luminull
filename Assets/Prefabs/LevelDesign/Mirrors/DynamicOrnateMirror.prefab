@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 23983072031399044}
   - component: {fileID: 135506505071330998}
   - component: {fileID: 114506004344717162}
-  - component: {fileID: 114725106839189256}
   m_Layer: 0
   m_Name: DynamicOrnateMirror
   m_TagString: Untagged
@@ -107,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 1688657774496134}
   m_LocalRotation: {x: -0, y: -1, z: -0.0000002533197, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 20}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4886842479373606}
   m_Father: {fileID: 0}
@@ -386,17 +385,6 @@ MonoBehaviour:
   RotateOnY: 1
   RotateOnZ: 0
   MirrorNumber: 0
---- !u!114 &114725106839189256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1688657774496134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9b51bcd83d6d44799911aa8b63c399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &135506505071330998
 SphereCollider:
   m_ObjectHideFlags: 1
