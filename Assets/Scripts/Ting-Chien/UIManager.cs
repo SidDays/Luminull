@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour {
     public GameObject Player;
     public GameObject MainCamera;
+    public GameObject ResultsCamera;
+    public GameObject ResultsLight;
     public Text GameStateAnnounceText;
     public Image PlayerBrightnessFiller;
     public Button NextLevelButton;
     public Slider MainSliderControl;
     public Canvas MainCanvas;
     public Canvas ResultsMenu;
-    public Text FinalCoinsCollectedText;
-    public Text FinalTimeText;
-    public Text TopSpeedText;
+    //public Text FinalCoinsCollectedText;
+    //public Text FinalTimeText;
+    //public Text TopSpeedText;
     public Text FinalScoreText;
+    public TextMeshProUGUI ResultsTitleText;
+    public TextMeshProUGUI ResultsSubtitleText;
     public Text PlayAgainButtonText;
+    public Text MainMenuButtonText;
     public float speedChangeInterval = 0.5f;
 
     static private float TimeMultiplier = 10.0f;
@@ -104,7 +110,7 @@ public class UIManager : MonoBehaviour {
     {
         CurrentScore += 0;
        // playerScoreText.text = "Score: " + val.ToString();
-        FinalCoinsCollectedText.text = "Coins: " + val.ToString();
+        //FinalCoinsCollectedText.text = "Coins: " + val.ToString();
     }
 
     public void SetPlayerSpeedText(float val)
@@ -115,7 +121,7 @@ public class UIManager : MonoBehaviour {
         }
 
         //playerSpeedText.text = "Speed: " + val.ToString();
-        TopSpeedText.text = "Top Speed: " + TopSpeed.ToString();
+        //TopSpeedText.text = "Top Speed: " + TopSpeed.ToString();
     }
 
     public void SetFinalTimeText()
@@ -133,7 +139,7 @@ public class UIManager : MonoBehaviour {
         {
             secondsString = ((int)FinalTime % 60).ToString();
         }
-        FinalTimeText.text = "Time: " + minutes + ":" + secondsString;
+        //FinalTimeText.text = "Time: " + minutes + ":" + secondsString;
     }
 
     public void SetFinalScoreText(bool Won)
@@ -145,7 +151,7 @@ public class UIManager : MonoBehaviour {
         }
 
         int TotalScoreInt = (int)TotalScore;
-        FinalScoreText.text = "Total: " + TotalScoreInt.ToString();
+        FinalScoreText.text = TotalScoreInt.ToString();
     }
 
     public void ToggleFinalScorePanel(bool Won)
@@ -154,11 +160,25 @@ public class UIManager : MonoBehaviour {
         {
             NextLevelButton.gameObject.SetActive(true);
             PlayAgainButtonText.text = "Play Again";
+            ResultsTitleText.text = "The Light Has";
+            ResultsSubtitleText.text = "ENDURED";
+            MainCamera.SetActive(false);
+            ResultsCamera.SetActive(true);
+            ResultsLight.SetActive(true);
         }
         else
         {
             NextLevelButton.gameObject.SetActive(false);
             PlayAgainButtonText.text = "Try Again";
+            ResultsTitleText.text = "The Light Has Been";
+            ResultsTitleText.color = new Color(255, 255, 255);
+            ResultsSubtitleText.text = "CONSUMED";
+            ResultsSubtitleText.color = new Color32(168, 0, 8,255);
+            PlayAgainButtonText.color = new Color(255, 255, 255);
+            MainMenuButtonText.color = new Color(255, 255, 255);
+            MainCamera.SetActive(false);
+            ResultsCamera.SetActive(true);
+            ResultsLight.SetActive(false);
         }
 
         if (MainCanvas)
@@ -181,6 +201,9 @@ public class UIManager : MonoBehaviour {
     public void OnPauseButtonClick()
     {
         GameStateController.OnGamePause(true);
+
+        MainCamera.SetActive(false);
+        ResultsCamera.SetActive(true);
     }
 
     // speed button click event - Deprecated

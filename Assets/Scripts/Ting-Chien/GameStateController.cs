@@ -99,6 +99,7 @@ public class GameStateController : MonoBehaviour {
             PauseMenu.enabled = false;
         }
         playerController.OnResume();
+
     }
 
     public void SetPlayerBrightnessDiff(float val)

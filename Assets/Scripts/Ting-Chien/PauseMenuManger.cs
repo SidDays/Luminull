@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PauseMenuManger : MonoBehaviour {
 
+    public GameObject MainCamera;
+    public GameObject ResultsCamera;
+
     private GameStateController GameStateController;
 
     void Awake()
@@ -27,5 +30,8 @@ public class PauseMenuManger : MonoBehaviour {
     public void OnResumeButtonClick()
     {
         GameStateController.OnGameResume();
+
+        ResultsCamera.SetActive(false);
+        MainCamera.SetActive(true);
     }
 }

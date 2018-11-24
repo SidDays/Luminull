@@ -16,30 +16,35 @@ public class FloatingObject : MonoBehaviour {
     private float CurrentZLocation;
 
     private bool FloatingUp = true;
+    private Vector3 TargetPosition;
 
 	// Use this for initialization
 	void Start () {
         CurrentXLocation = transform.position.x;
         CurrentYLocation = transform.position.y;
         CurrentZLocation = transform.position.z;
-	}
+        TargetPosition = transform.position + transform.forward * TranslateOffset;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if(FloatingUp && Vector3.Distance(transform.position,transform.position + transform.forward*TranslateOffset) > 0.1f)
+		if(FloatingUp && Vector3.Distance(transform.position, TargetPosition) > 0.1f)
         {
-            transform.position += transform.up * 0.1f;
-            if(Vector3.Distance(transform.position, transform.position + transform.forward * TranslateOffset) < 0.1f)
+            transform.position += transform.forward * Time.deltaTime * speed;
+            if(Vector3.Distance(transform.position, TargetPosition) < 0.1f)
             {
                 FloatingUp = false;
+                TargetPosition = transform.position + 2 *transform.forward * -TranslateOffset;
             }
         }
-        else if(Vector3.Distance(transform.position, transform.position - transform.forward * TranslateOffset) > 0.1f)
+        else if(Vector3.Distance(transform.position, TargetPosition) > 0.1f)
         {
-            transform.position -= transform.up * 0.1f;
-            if (Vector3.Distance(transform.position, transform.position + transform.forward * TranslateOffset) < 0.1f)
+            transform.position -= transform.forward * Time.deltaTime * speed;
+            if (Vector3.Distance(transform.position, TargetPosition) < 0.1f)
             {
                 FloatingUp = true;
+                TargetPosition = transform.position + 2 *transform.forward * TranslateOffset;
             }
         }
     }
