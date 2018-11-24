@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4713673323724368}
   - component: {fileID: 33449068781449184}
   - component: {fileID: 23706518684093894}
+  - component: {fileID: 65650660819961282}
+  - component: {fileID: 114838927630822300}
   m_Layer: 0
   m_Name: Column
   m_TagString: Wall
@@ -34,13 +36,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943623798206306}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.70710677}
-  m_LocalPosition: {x: 3.5912087, y: -38.32, z: 5.07}
-  m_LocalScale: {x: 0.06845005, y: 0.06845008, z: 0.06845007}
+  m_LocalRotation: {x: 0.49999928, y: 0.49999928, z: 0.5000008, w: 0.5000007}
+  m_LocalPosition: {x: -52.3, y: -4.96, z: 25.125}
+  m_LocalScale: {x: 0.10597406, y: 0.15289356, z: 0.10597406}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 90.00001}
 --- !u!23 &23706518684093894
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -56,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8d95b64557a72c6439e83ed8191fb550, type: 3}
+  - {fileID: 2100000, guid: cf3ba4bd232d55a4f8d98fd07c6ec2e4, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +85,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943623798206306}
   m_Mesh: {fileID: 4300004, guid: 8d95b64557a72c6439e83ed8191fb550, type: 3}
+--- !u!65 &65650660819961282
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943623798206306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.748009, y: 95.2756, z: 15.748019}
+  m_Center: {x: -0.000004410525, y: 47.6378, z: -0.000029444484}
+--- !u!114 &114838927630822300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943623798206306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f1751c4e9ce4bcdb1f382ac9cd5a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RedirectPointTransform: {fileID: 0}
