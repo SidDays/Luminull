@@ -9,6 +9,7 @@ public class MirrorManager : MonoBehaviour {
 
     private int current;
     private RotateObject currentMirror;
+    private RotateObject nextMirror;
 
 	// Use this for initialization
 	void Start () {
@@ -48,7 +49,7 @@ public class MirrorManager : MonoBehaviour {
                 Mirrors[iMirrors] = mirror;
                 if(bIsMirrorAvailable[iMirrors])
                 {
-                    Debug.LogWarning("Mirror number duplicated\n");
+                    Debug.LogWarning("Mirror number duplicated " + iMirrors + "\n");
                 }
                 bIsMirrorAvailable[iMirrors] = true;
             }
@@ -57,6 +58,9 @@ public class MirrorManager : MonoBehaviour {
         current = 0;
         currentMirror = Mirrors[current];
         currentMirror.Select();
+
+        nextMirror = Mirrors[1];
+        nextMirror.SelectAsNext();
 	}
 	
     public void RotateCurrentSelectedMirror()
@@ -66,31 +70,41 @@ public class MirrorManager : MonoBehaviour {
 
 	public void SelectNextMirror()
     {
-        currentMirror.Deselect();
-        for(int i = current+1; i < Mirrors.Length; i++)
+        int index = GetNextMirror();
+        if(index > -1)
         {
-            if (bIsMirrorAvailable[i])
-            {
-                current = i;
-                currentMirror = Mirrors[current];
-                currentMirror.Select();
-                break;
-            }
+            currentMirror.Deselect();
+            current = index;
+            currentMirror = Mirrors[current];
+            currentMirror.Select();
+        }
+
+        index = GetNextMirror();
+        if(index > -1)
+        {
+            nextMirror.DeselectAsNext();
+            nextMirror = Mirrors[index];
+            nextMirror.SelectAsNext();
         }
     }
 
     public void SelectPreviousMirror()
     {
-        currentMirror.Deselect();
-        for (int i = current - 1; i >= 0; i--)
+        int index = GetPrevMirror();
+        if(index > -1)
         {
-            if (bIsMirrorAvailable[i])
-            {
-                current = i;
-                currentMirror = Mirrors[current];
-                currentMirror.Select();
-                break;
-            }
+            currentMirror.Deselect();
+            current = index;
+            currentMirror = Mirrors[current];
+            currentMirror.Select();
+        }
+
+        index = GetNextMirror();
+        if (index > -1)
+        {
+            nextMirror.DeselectAsNext();
+            nextMirror = Mirrors[index];
+            nextMirror.SelectAsNext();
         }
     }
 
@@ -107,6 +121,30 @@ public class MirrorManager : MonoBehaviour {
         {
             Debug.LogWarning("The mirror " + mirrorNumber + " cannot be selected.");
         }
+    }
+
+    private int GetNextMirror()
+    {
+        for (int i = current + 1; i < Mirrors.Length; i++)
+        {
+            if (bIsMirrorAvailable[i])
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private int GetPrevMirror()
+    {
+        for (int i = current - 1; i >= 0; i--)
+        {
+            if (bIsMirrorAvailable[i])
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     // TODO: handle current mirror is breaking

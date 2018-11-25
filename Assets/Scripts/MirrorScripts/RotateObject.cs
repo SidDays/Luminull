@@ -10,6 +10,7 @@ public class RotateObject : MonoBehaviour {
 
     public static GameObject SelectedMirror = null;
     private GameObject _outline;
+    private GameObject outlineNext;
 
     /// Required to select mirror on tap, MirrorManager initializes this itself
     public MirrorManager mirrorManager;
@@ -50,6 +51,18 @@ public class RotateObject : MonoBehaviour {
         } else {
             Debug.LogWarning("Outline for Mirror " + this.GetHashCode() + " was not found!");
         }
+        // set reference to the outline next
+        outlineTransform = this.transform.Find("MirrorOutlineNext");
+        if(outlineTransform == null)
+        {
+            outlineTransform = this.transform.GetChild(0).transform.Find("MirrorOutlineNext");
+        }
+        if(outlineTransform != null)
+        {
+            outlineNext = outlineTransform.gameObject;
+        }
+        else
+            Debug.LogWarning("outlineNext not found! (wrong child place)");
     }
 
     void Update()
@@ -102,5 +115,15 @@ public class RotateObject : MonoBehaviour {
 
         _isSelected = false;
         SelectedMirror = null;
+    }
+
+    public void SelectAsNext()
+    {
+        outlineNext.SetActive(true);
+    }
+
+    public void DeselectAsNext()
+    {
+        outlineNext.SetActive(false);
     }
 }
