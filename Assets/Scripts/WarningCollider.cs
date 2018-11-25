@@ -5,6 +5,7 @@ using UnityEngine;
 public class WarningCollider : MonoBehaviour
 {
     private GameObject Player;
+    private AudioSource WarningSound;
     private ParticleSystem PlayerParticleSystemInner;
     private ParticleSystem.MinMaxGradient PlayerParticleSystemInnerColor;
     private ParticleSystem.MainModule PlayerParticleSystemInnerMain;
@@ -15,11 +16,17 @@ public class WarningCollider : MonoBehaviour
     private float WarningFlashSpeed = .1f;
     private bool WarningFlashActivated = false;
     private bool WarningColorActive = false;
+    private bool FadeWarningSound = false;
 
     // Use this for initialization
     void Start()
     {
         Player = GameObject.Find("Player");
+
+        if (GameObject.Find("WarningSound") != null)
+        {
+            WarningSound = GameObject.Find("WarningSound").GetComponent<AudioSource>();
+        }
 
         if (Player != null)
         {
@@ -43,6 +50,10 @@ public class WarningCollider : MonoBehaviour
 
     private void Update()
     {
+        if(FadeWarningSound)
+        {
+            StartCoroutine(StopWarningSound());
+        }
         /*if(WarningFlashActivated && WarningFlashInterval > 0)
         {
             WarningFlashInterval -= .01f;
@@ -74,6 +85,10 @@ public class WarningCollider : MonoBehaviour
             ChangeParticleColor(PlayerParticleSystemInnerMain, Color.red, true);
             ChangeParticleColor(PlayerParticleSystemOuterMain, Color.red, true);
 
+            if(WarningSound != null)
+            {
+                WarningSound.Play();
+            }
         }
     }
 
@@ -85,6 +100,11 @@ public class WarningCollider : MonoBehaviour
             ChangeParticleColor(PlayerParticleSystemInnerMain, PlayerParticleSystemInnerColor,false);
             ChangeParticleColor(PlayerParticleSystemOuterMain, PlayerParticleSystemOuterColor,false);
             WarningFlashInterval = 0.0f;
+
+            if (WarningSound != null)
+            {
+                FadeWarningSound = true;
+            }
         }
     }
 
@@ -93,5 +113,22 @@ public class WarningCollider : MonoBehaviour
         Debug.Log("Warning color changing");
         WarningColorActive = IsWarningColor;
         MainParticleSystem.startColor = colorToChangeTo;
+    }
+
+    IEnumerator StopWarningSound()
+    {
+        Debug.Log("Trying to stop warning sound");
+        if (WarningSound!=null)
+        {
+            WarningSound.volume -= 0.1f;
+            Debug.Log(WarningSound.volume);
+            if(WarningSound.volume <= 0)
+            {
+                WarningSound.Stop();
+                FadeWarningSound = false;
+                WarningSound.volume = 1.0f;
+            }
+        }
+        yield return null;
     }
 }
