@@ -10,10 +10,16 @@ public class PickUp : MonoBehaviour {
 
     private float yOriginPos;
     private float count;
+    private AudioSource PowerUpSound;
 
 	// Use this for initialization
 	void Start () {
         yOriginPos = transform.position.y;
+        GameObject PowerUpSoundObject = GameObject.Find("BrightnessPowerUpSound");
+        if (PowerUpSoundObject != null)
+        {
+            PowerUpSound = PowerUpSoundObject.GetComponent<AudioSource>();
+        }
 	}
 	
 	// Update is called once per frame
@@ -37,6 +43,10 @@ public class PickUp : MonoBehaviour {
 
     public virtual void OnPickUp()
     {
+        if(PowerUpSound !=null)
+        {
+            PowerUpSound.Play();
+        }
         gameObject.SetActive(false);
     }
 }

@@ -10,7 +10,7 @@ public class RotateObject : MonoBehaviour {
 
     public static GameObject SelectedMirror = null;
     private GameObject _outline;
-    private GameObject outlineNext;
+    public GameObject outlineNext;
 
     /// Required to select mirror on tap, MirrorManager initializes this itself
     public MirrorManager mirrorManager;
