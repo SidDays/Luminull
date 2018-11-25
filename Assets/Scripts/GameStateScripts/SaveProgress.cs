@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SaveProgress : MonoBehaviour {
 
+    public int LevelNumber = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,7 +18,7 @@ public class SaveProgress : MonoBehaviour {
     public void SaveLevelProgress()
     {
         int CurrentLevelsCompleted = PlayerPrefs.GetInt("NumLevelsCompleted");
-        PlayerPrefs.SetInt("NumLevelsCompleted", CurrentLevelsCompleted+1);
+        PlayerPrefs.SetInt("NumLevelsCompleted", LevelNumber);
     }
 
     public void ResetLevelProgress()

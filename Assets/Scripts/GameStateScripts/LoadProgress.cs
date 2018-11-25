@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LoadProgress : MonoBehaviour {
 
     public GameObject LevelPanel;
+    public Sprite LevelIncompleteIcon;
     public Sprite LevelCompletedIcon;
     public Sprite LevelLockedIcon;
 
@@ -55,6 +56,19 @@ public class LoadProgress : MonoBehaviour {
                 {
                     ProgressIcon.GetComponent<Image>().enabled = false;
                 }
+            }
+        }
+    }
+
+    public void ResetLevelProgressIcons()
+    {
+        for (int i = 0; i < LevelPanel.transform.childCount; i++)
+        {
+            GameObject ProgressIcon = LevelPanel.transform.GetChild(i).Find("ProgressIcon").gameObject;
+            if (ProgressIcon != null)
+            {
+                ProgressIcon.GetComponent<Image>().sprite = LevelIncompleteIcon;
+                LevelPanel.transform.GetChild(i).GetComponent<Image>().sprite = LevelIncompleteIcon;
             }
         }
     }
