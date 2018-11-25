@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameStateController : MonoBehaviour {
 
@@ -9,9 +10,14 @@ public class GameStateController : MonoBehaviour {
     public float PlayerBrightnessBeginValue;
     public float PlayerBrightnessDecreaseRatePerSec;
 
+    public GameObject InstructionsPanel;
+    public GameObject InstructionsButton;
+    public TextMeshProUGUI InstructionsText;
+
     private float PlayerBrightness;
     private UIManager UIManager;
     private PlayerController playerController;
+    private GameObject ProgressSaver;
 
     private bool isGamePaused;
 
@@ -19,6 +25,7 @@ public class GameStateController : MonoBehaviour {
     {
         UIManager = UI.GetComponent<UIManager>();
         GameObject player = GameObject.Find("Player");
+        ProgressSaver = GameObject.Find("ProgressSaver");
         if (player == null)
             Debug.Log("GameStateController: Can not find Player in scene.\n");
         playerController = player.GetComponent<PlayerController>();
@@ -60,6 +67,11 @@ public class GameStateController : MonoBehaviour {
         UIManager.SetFinalScoreText(true);
         UIManager.ToggleFinalScorePanel(true);
         OnGamePause(false);
+        if(ProgressSaver!=null)
+        {
+            ProgressSaver.GetComponent<SaveProgress>().SaveLevelProgress();
+        }
+
         //UnityEditor.EditorApplication.isPlaying = false;
     }
 
@@ -120,5 +132,18 @@ public class GameStateController : MonoBehaviour {
         UIManager.GameStateAnnounceText.text = "";
         UIManager.GameStateAnnounceText.enabled = false;
         OnGameResume();
+    }
+
+    public void ResumeGameFromTutorial()
+    {
+        if(InstructionsPanel != null && InstructionsText != null && InstructionsButton !=null)
+        {
+            InstructionsText.text = "";
+
+            Time.timeScale = 1;
+
+            InstructionsButton.gameObject.SetActive(false);
+            InstructionsPanel.SetActive(false);
+        }
     }
 }
