@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1324,12 +1324,6 @@ Transform:
   m_Father: {fileID: 1695243503}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &723543175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114670384161934078, guid: b514db50dd828bb40be5ac9fb7731bf5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1134994618}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &797594316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,12 +1609,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4713193951454674, guid: 20590583da0da6d49aca9092b79aacf2,
     type: 2}
   m_PrefabInternal: {fileID: 917202936}
---- !u!114 &1029862438 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114121344410334308, guid: b514db50dd828bb40be5ac9fb7731bf5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1134994618}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1055882797 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114322009042237758, guid: b514db50dd828bb40be5ac9fb7731bf5,
@@ -1732,27 +1720,27 @@ Prefab:
     - target: {fileID: 224220489148367582, guid: b514db50dd828bb40be5ac9fb7731bf5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -177.32204
+      value: -250.775
       objectReference: {fileID: 0}
     - target: {fileID: 224070795824059918, guid: b514db50dd828bb40be5ac9fb7731bf5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -46.757347
+      value: -60.745
       objectReference: {fileID: 0}
     - target: {fileID: 224331692265742614, guid: b514db50dd828bb40be5ac9fb7731bf5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -390.08643
+      value: -419.49
       objectReference: {fileID: 0}
     - target: {fileID: 224072332584253036, guid: b514db50dd828bb40be5ac9fb7731bf5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -300.78174
+      value: -352.21002
       objectReference: {fileID: 0}
     - target: {fileID: 224480499636707294, guid: b514db50dd828bb40be5ac9fb7731bf5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -479.3911
+      value: -486.77002
       objectReference: {fileID: 0}
     - target: {fileID: 114967132927723238, guid: b514db50dd828bb40be5ac9fb7731bf5,
         type: 2}
@@ -2264,24 +2252,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53f6a8303c3624149a537465b1d7633d, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1580442659 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1910058645966066, guid: e5a2253df62de784a8a6e5625a753a9c,
-    type: 2}
-  m_PrefabInternal: {fileID: 340817133}
---- !u!114 &1580442663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1580442659}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8316a976f0c4caf97b5e67838fbf6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  instructText: {fileID: 0}
-  OK_button: {fileID: 0}
 --- !u!1001 &1581624105
 Prefab:
   m_ObjectHideFlags: 0
@@ -2622,17 +2592,17 @@ Prefab:
         type: 2}
       propertyPath: FinalCoinsCollectedText
       value: 
-      objectReference: {fileID: 1832988347}
+      objectReference: {fileID: 0}
     - target: {fileID: 114554395139828570, guid: b0697590cc7862e4e90a14a735c73185,
         type: 2}
       propertyPath: FinalTimeText
       value: 
-      objectReference: {fileID: 1029862438}
+      objectReference: {fileID: 0}
     - target: {fileID: 114554395139828570, guid: b0697590cc7862e4e90a14a735c73185,
         type: 2}
       propertyPath: TopSpeedText
       value: 
-      objectReference: {fileID: 723543175}
+      objectReference: {fileID: 0}
     - target: {fileID: 114554395139828570, guid: b0697590cc7862e4e90a14a735c73185,
         type: 2}
       propertyPath: FinalScoreText
@@ -2646,7 +2616,7 @@ Prefab:
     - target: {fileID: 224892466394170394, guid: b0697590cc7862e4e90a14a735c73185,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -369.04346
+      value: -368.3117
       objectReference: {fileID: 0}
     - target: {fileID: 224892466394170394, guid: b0697590cc7862e4e90a14a735c73185,
         type: 2}
@@ -2882,12 +2852,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20590583da0da6d49aca9092b79aacf2, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1832988347 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114978523353793048, guid: b514db50dd828bb40be5ac9fb7731bf5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1134994618}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1837832493
 Prefab:
   m_ObjectHideFlags: 0
@@ -3003,22 +2967,22 @@ Prefab:
     - target: {fileID: 224525202381259158, guid: c19afd4fc7943a84a9c442ed424d4d78,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -455.93927
+      value: -455.299
       objectReference: {fileID: 0}
     - target: {fileID: 224340296355060948, guid: c19afd4fc7943a84a9c442ed424d4d78,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -70.20918
+      value: -70.117714
       objectReference: {fileID: 0}
     - target: {fileID: 224215524245310490, guid: c19afd4fc7943a84a9c442ed424d4d78,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -329.7309
+      value: -329.27356
       objectReference: {fileID: 0}
     - target: {fileID: 224738688415714252, guid: c19afd4fc7943a84a9c442ed424d4d78,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -203.52255
+      value: -203.24814
       objectReference: {fileID: 0}
     - target: {fileID: 114987660538986046, guid: c19afd4fc7943a84a9c442ed424d4d78,
         type: 2}
