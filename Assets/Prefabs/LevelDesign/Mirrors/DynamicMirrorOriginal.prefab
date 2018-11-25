@@ -59,9 +59,9 @@ GameObject:
   - component: {fileID: 4833532778762000}
   - component: {fileID: 33860768940054364}
   - component: {fileID: 23095635529459230}
-  - component: {fileID: 135839550510834416}
   - component: {fileID: 114026151937634408}
   - component: {fileID: 114580480758076390}
+  - component: {fileID: 65096852280512272}
   m_Layer: 0
   m_Name: DynamicMirrorOriginal
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568937358027630}
   m_LocalRotation: {x: -0.0000002533197, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0012834, y: 2.16, z: 27.54191}
+  m_LocalPosition: {x: -25.67425, y: 14.530508, z: -41.214138}
   m_LocalScale: {x: 3.0554276, y: 3.0375001, z: 4.338802}
   m_Children:
   - {fileID: 4000723356738228}
@@ -324,6 +324,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &65096852280512272
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568937358027630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1030835, y: 1.1257997, z: 0.17571455}
+  m_Center: {x: 0, y: 0.021633511, z: 5.862337e-16}
 --- !u!65 &65812055302596998
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -397,15 +409,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9b51bcd83d6d44799911aa8b63c399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135839550510834416
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568937358027630}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
