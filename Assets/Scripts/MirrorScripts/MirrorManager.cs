@@ -68,7 +68,10 @@ public class MirrorManager : MonoBehaviour {
         }
 
         previousMirror = Mirrors[Mirrors.Length - 1];
-        previousMirror.SelectAsPrevious();
+        if (previousMirror != null)
+        {
+            previousMirror.SelectAsPrevious();
+        }
 	}
 	
     public void RotateCurrentSelectedMirror()
