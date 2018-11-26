@@ -10,6 +10,7 @@ public class MirrorManager : MonoBehaviour {
     private int current;
     private RotateObject currentMirror;
     private RotateObject nextMirror;
+    private RotateObject previousMirror;
 
 	// Use this for initialization
 	void Start () {
@@ -59,8 +60,15 @@ public class MirrorManager : MonoBehaviour {
         currentMirror = Mirrors[current];
         currentMirror.Select();
 
-        nextMirror = Mirrors[1];
-        nextMirror.SelectAsNext();
+        int NextIndex = GetNextMirror();
+        if (NextIndex > -1)
+        {
+            nextMirror = Mirrors[NextIndex];
+            nextMirror.SelectAsNext();
+        }
+
+        previousMirror = Mirrors[Mirrors.Length - 1];
+        previousMirror.SelectAsPrevious();
 	}
 	
     public void RotateCurrentSelectedMirror()
@@ -71,7 +79,15 @@ public class MirrorManager : MonoBehaviour {
 	public void SelectNextMirror()
     {
         int index = GetNextMirror();
-        if(index > -1)
+
+        if (index > -1)
+        {
+            previousMirror.DeselectAsPrevious();
+            previousMirror = currentMirror;
+            previousMirror.SelectAsPrevious();
+        }
+
+        if (index > -1)
         {
             currentMirror.Deselect();
             current = index;
@@ -91,12 +107,21 @@ public class MirrorManager : MonoBehaviour {
     public void SelectPreviousMirror()
     {
         int index = GetPrevMirror();
-        if(index > -1)
+
+        if (index > -1)
         {
             currentMirror.Deselect();
             current = index;
             currentMirror = Mirrors[current];
             currentMirror.Select();
+        }
+
+        int prevIndex = GetPrevMirror();
+        if (prevIndex > -1)
+        {
+            previousMirror.DeselectAsPrevious();
+            previousMirror = Mirrors[prevIndex];
+            previousMirror.SelectAsPrevious();
         }
 
         index = GetNextMirror();
@@ -132,6 +157,12 @@ public class MirrorManager : MonoBehaviour {
                 return i;
             }
         }
+
+        if(current + 1 >= Mirrors.Length)
+        {
+            return 0;
+        }
+
         return -1;
     }
 
@@ -144,6 +175,12 @@ public class MirrorManager : MonoBehaviour {
                 return i;
             }
         }
+
+        if(current - 1 <0)
+        {
+            return Mirrors.Length - 1;
+        }
+
         return -1;
     }
 

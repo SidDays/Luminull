@@ -69,6 +69,7 @@ public class GameStateController : MonoBehaviour {
         OnGamePause(false);
         if(ProgressSaver!=null)
         {
+            Debug.Log("Progress Saved");
             ProgressSaver.GetComponent<SaveProgress>().SaveLevelProgress();
         }
 

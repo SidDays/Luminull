@@ -117,11 +117,9 @@ public class WarningCollider : MonoBehaviour
 
     IEnumerator StopWarningSound()
     {
-        Debug.Log("Trying to stop warning sound");
         if (WarningSound!=null)
         {
             WarningSound.volume -= 0.1f;
-            Debug.Log(WarningSound.volume);
             if(WarningSound.volume <= 0)
             {
                 WarningSound.Stop();
